@@ -28,6 +28,5 @@ public class BasicPipeline
                 AnalysisEngineFactory.createEngineDescription(SnowballStemmer.class, SnowballStemmer.PARAM_LANGUAGE, "en"),
                 AnalysisEngineFactory.createEngineDescription(CasDumpWriter.class)
         );
-        
     }
 }
