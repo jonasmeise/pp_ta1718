@@ -15,6 +15,7 @@ public class JSONreader{
 		this.file = file;
 	}
 	
+	//Testweise Main-Methode
 	public static void main(String[] args) throws IOException {
 		JSONreader myJSONreader = new JSONreader("C:\\Users\\Jonas\\git\\Musical_Instruments_5.json");
 		
@@ -42,7 +43,9 @@ public class JSONreader{
 			  reviewList.add(currentReview);
 		  }
 		}
-
+		
+		System.out.println(reviewList.size() + " zutreffende Werte eingelesen");
+		
 		//Input-Stream schlieﬂen
 		br.close();
 	}

@@ -20,7 +20,7 @@ public class BasicPipeline
         SimplePipeline.runPipeline(
                 CollectionReaderFactory.createReader(
                         ReaderExample.class,
-                        ReaderExample.PARAM_INPUT_FILE, "src/test/resources/test/input.txt"
+                        ReaderExample.PARAM_INPUT_FILE, "src/test/resources/test/input2.txt"
                 ),
                 AnalysisEngineFactory.createEngineDescription(BaselineExample.class),
                 AnalysisEngineFactory.createEngineDescription(EvaluatorExample.class),
