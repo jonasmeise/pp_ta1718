@@ -7,11 +7,13 @@ import org.apache.uima.collection.CollectionReader;
 import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.fit.component.CasDumpWriter;
 
+import static org.apache.uima.fit.factory.CollectionReaderFactory.createReaderDescription;
+import static org.apache.uima.fit.pipeline.SimplePipeline.runPipeline;
 import de.tudarmstadt.ukp.dkpro.core.io.text.TextReader;
-import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordNamedEntityRecognizer;
-import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
-import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordParser;
-import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordSegmenter;
+import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolLemmatizer;
+import de.tudarmstadt.ukp.dkpro.core.maltparser.MaltParser;
+import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
+import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpSegmenter;
 import de.unidue.langtech.teaching.pp.example.BaselineExample;
 import de.unidue.langtech.teaching.pp.example.EvaluatorExample;
 import de.unidue.langtech.teaching.pp.example.ReaderExample;
@@ -28,14 +30,12 @@ public class Pipeline
     	        TextReader.PARAM_SOURCE_LOCATION, ".\\src\\test\\resources\\test\\input2.txt",
     	        TextReader.PARAM_LANGUAGE, "en");
     	
-        AnalysisEngineDescription seg = createEngineDescription(BreakIteratorSegmenter.class);
+        AnalysisEngineDescription seg = createEngineDescription(OpenNlpSegmenter.class);
 
-        AnalysisEngineDescription ner = createEngineDescription(StanfordNamedEntityRecognizer.class);
-
-        AnalysisEngineDescription parser = createEngineDescription(StanfordParser.class);
+        AnalysisEngineDescription pos = createEngineDescription(OpenNlpPosTagger.class);
 
         AnalysisEngineDescription writer = createEngineDescription(CasDumpWriter.class);
     	
-    	SimplePipeline.runPipeline(reader, seg, ner, parser, writer);
+    	SimplePipeline.runPipeline(reader, seg, pos, writer);
     }
 }
