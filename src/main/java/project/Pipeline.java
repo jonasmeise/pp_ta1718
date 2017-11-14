@@ -34,7 +34,7 @@ public class Pipeline
 
         AnalysisEngineDescription pos = createEngineDescription(OpenNlpPosTagger.class);
 
-        AnalysisEngineDescription writer = createEngineDescription(CasDumpWriter.class);
+        AnalysisEngineDescription writer = createEngineDescription(productWriter.class);
     	
     	SimplePipeline.runPipeline(reader, seg, pos, writer);
     }
