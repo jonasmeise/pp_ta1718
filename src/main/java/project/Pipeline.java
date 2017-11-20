@@ -10,13 +10,9 @@ import org.apache.uima.fit.component.CasDumpWriter;
 import static org.apache.uima.fit.factory.CollectionReaderFactory.createReaderDescription;
 import static org.apache.uima.fit.pipeline.SimplePipeline.runPipeline;
 import de.tudarmstadt.ukp.dkpro.core.io.text.TextReader;
-import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolLemmatizer;
-import de.tudarmstadt.ukp.dkpro.core.maltparser.MaltParser;
 import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
 import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpSegmenter;
-import de.unidue.langtech.teaching.pp.example.BaselineExample;
-import de.unidue.langtech.teaching.pp.example.EvaluatorExample;
-import de.unidue.langtech.teaching.pp.example.ReaderExample;
+import de.tudarmstadt.ukp.dkpro.core.snowball.SnowballStemmer;
 
 public class Pipeline 
 {
@@ -33,9 +29,11 @@ public class Pipeline
         AnalysisEngineDescription seg = createEngineDescription(OpenNlpSegmenter.class);
 
         AnalysisEngineDescription pos = createEngineDescription(OpenNlpPosTagger.class);
+        
+        AnalysisEngineDescription snw = createEngineDescription(SnowballStemmer.class, SnowballStemmer.PARAM_LANGUAGE, "en");
 
         AnalysisEngineDescription writer = createEngineDescription(productWriter.class);
-    	
-    	SimplePipeline.runPipeline(reader, seg, pos, writer);
+        
+    	SimplePipeline.runPipeline(reader, seg, pos, snw, writer);
     }
 }
