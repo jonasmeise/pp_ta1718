@@ -13,7 +13,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
 
 
-public class productWriter extends JCasConsumer_ImplBase {
+public class ProductWriter extends JCasConsumer_ImplBase {
 	
 	public ArrayList sentenceData = new ArrayList<Sentence>();
 	
@@ -22,11 +22,15 @@ public class productWriter extends JCasConsumer_ImplBase {
 		
 		for (Sentence sentence : JCasUtil.select(aJCas, Sentence.class)) {		
 			
-			sentenceData.add(sentence);
+			System.out.println(sentence.getCoveredText());
 			
 			for(Token token : JCasUtil.selectCovered(aJCas, Token.class, sentence)) {
-						
+				//System.out.println(token.getStem().getValue() + token.getPos().getPosValue());		
 			}
 		}
+	}
+	
+	public ArrayList getSentenceData() {
+		return sentenceData;
 	}
 }

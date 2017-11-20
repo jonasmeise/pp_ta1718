@@ -1,6 +1,6 @@
 package project;
 
-public class productReview {
+public class ProductReview {
 	private String reviewerID;
 	private String asin;
 	private String reviewerName;
@@ -11,8 +11,8 @@ public class productReview {
 	private String unixReviewTime;
 	private String reviewTime;
 	
-	public productReview() {}
-	public productReview(String dataset) {
+	public ProductReview() {}
+	public ProductReview(String dataset) {
 		setData(dataset);
 	}
 	

@@ -9,6 +9,10 @@ import org.apache.uima.fit.component.CasDumpWriter;
 
 import static org.apache.uima.fit.factory.CollectionReaderFactory.createReaderDescription;
 import static org.apache.uima.fit.pipeline.SimplePipeline.runPipeline;
+
+import java.util.ArrayList;
+
+import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.io.text.TextReader;
 import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
 import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpSegmenter;
@@ -21,10 +25,15 @@ public class Pipeline
         throws Exception
     {    	
     	
-    	CollectionReader reader = createReader(
+    	/*CollectionReader reader = createReader(
     	        TextReader.class,
     	        TextReader.PARAM_SOURCE_LOCATION, ".\\src\\test\\resources\\test\\input2.txt",
-    	        TextReader.PARAM_LANGUAGE, "en");
+    	        TextReader.PARAM_LANGUAGE, "en");*/
+    	
+    	String fileString =  "C:\\Users\\Jonas\\git\\pp_ta1718\\de.unidue.langtech.teaching.pp.meise\\Musical_Instruments_5.json";
+    	
+    	CollectionReader reader = createReader(ReviewReader.class, 
+    			ReviewReader.PARAM_INPUT_FILE, fileString);
     	
         AnalysisEngineDescription seg = createEngineDescription(OpenNlpSegmenter.class);
 
@@ -32,8 +41,8 @@ public class Pipeline
         
         AnalysisEngineDescription snw = createEngineDescription(SnowballStemmer.class, SnowballStemmer.PARAM_LANGUAGE, "en");
 
-        AnalysisEngineDescription writer = createEngineDescription(productWriter.class);
+        AnalysisEngineDescription writer = createEngineDescription(ProductWriter.class);
         
-    	SimplePipeline.runPipeline(reader, seg, pos, snw, writer);   
+    	SimplePipeline.runPipeline(reader, seg, pos, snw, writer);
     }
 }

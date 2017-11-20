@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class JSONreader{
 	
 	public String file;
-	public ArrayList<productReview> reviewList = new ArrayList<productReview>();
+	public ArrayList<ProductReview> reviewList = new ArrayList<ProductReview>();
 	
 	public JSONreader(String file) {
 		this.file = file;
@@ -17,7 +17,7 @@ public class JSONreader{
 	
 	//Testweise Main-Methode
 	public static void main(String[] args) throws IOException {
-		JSONreader myJSONreader = new JSONreader("C:\\Users\\Jonas\\git\\Musical_Instruments_5.json");
+		JSONreader myJSONreader = new JSONreader(args[0]);
 		
 		myJSONreader.readObjects();
 	}	
@@ -32,10 +32,10 @@ public class JSONreader{
 		BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
 
 		String strLine;
-		productReview currentReview = new productReview();
 
 		while ((strLine = br.readLine()) != null)   {
 		  
+		  ProductReview currentReview = new ProductReview();
 		  currentReview.setData(strLine);
 		  
 		  if(currentReview.getAsin()!=asin || asin == "") {
@@ -50,7 +50,7 @@ public class JSONreader{
 		br.close();
 	}
 	
-	public ArrayList<productReview> getReviewList(){
+	public ArrayList<ProductReview> getReviewList(){
 		return reviewList;
 	}
 }
