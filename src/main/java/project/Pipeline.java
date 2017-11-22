@@ -30,7 +30,8 @@ public class Pipeline
     	        TextReader.PARAM_SOURCE_LOCATION, ".\\src\\test\\resources\\test\\input2.txt",
     	        TextReader.PARAM_LANGUAGE, "en");*/
     	
-    	String fileString =  "C:\\Users\\Jonas\\git\\pp_ta1718\\de.unidue.langtech.teaching.pp.meise\\Musical_Instruments_5.json";
+    	String fileString =  ".\\Musical_Instruments_5.json";
+    	String emotionDataFile = ".\\NRC_sentimentLexicon.txt";
     	
     	CollectionReader reader = createReader(ReviewReader.class, 
     			ReviewReader.PARAM_INPUT_FILE, fileString);
@@ -41,8 +42,10 @@ public class Pipeline
         
         AnalysisEngineDescription snw = createEngineDescription(SnowballStemmer.class, SnowballStemmer.PARAM_LANGUAGE, "en");
 
+        AnalysisEngineDescription evl = createEngineDescription(ReviewEvaluator.class, ReviewEvaluator.PARAM_INPUT_FILE, emotionDataFile);
+        
         AnalysisEngineDescription writer = createEngineDescription(ProductWriter.class);
         
-    	SimplePipeline.runPipeline(reader, seg, pos, snw, writer);
+    	SimplePipeline.runPipeline(reader, seg, pos, snw, evl, writer);
     }
 }
