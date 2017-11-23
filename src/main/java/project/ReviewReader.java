@@ -18,8 +18,6 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.util.Progress;
 import org.apache.uima.util.ProgressImpl;
 
-import com.ibm.icu.text.CharsetDetector;
-
 import de.tudarmstadt.ukp.dkpro.core.api.io.ResourceCollectionReaderBase;
 import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.tudarmstadt.ukp.dkpro.core.api.parameter.ComponentParameters;
@@ -38,6 +36,9 @@ public class ReviewReader
     @ConfigurationParameter(name = PARAM_INPUT_FILE, mandatory = true)
     private String inputFile;    
     
+    public static final String PARAM_FILTER_ASIN = "filterASIN";
+    @ConfigurationParameter(name = PARAM_FILTER_ASIN, mandatory = false)
+    private String filterASIN;    
     
     JSONreader myReader;
     private int currentObject;
@@ -56,7 +57,7 @@ public class ReviewReader
         myReader = new JSONreader(inputFile);
         
         try {
-			myReader.readObjects();
+			myReader.readObjects(filterASIN);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

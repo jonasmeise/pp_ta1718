@@ -38,7 +38,7 @@ public class JSONreader{
 		  ProductReview currentReview = new ProductReview();
 		  currentReview.setData(strLine);
 		  
-		  if(currentReview.getAsin()!=asin || asin == "") {
+		  if(currentReview.getAsin().compareTo(asin)==0 || asin == "") {
 			  //Objekt ist unser gesuchter ASIN-Wert oder wir lesen alle Objekte ein
 			  reviewList.add(currentReview);
 		  }

@@ -21,7 +21,7 @@ public class ProductWriter extends JCasConsumer_ImplBase {
 		
 		for (Sentence sentence : JCasUtil.select(aJCas, Sentence.class)) {		
 			
-			System.out.println(sentence.getCoveredText());
+			//System.out.println(sentence.getCoveredText());
 
 			/*for(Token token : JCasUtil.selectCovered(aJCas, Token.class, sentence)) {
 				System.out.println(token.getStem().getValue() + token.getPos().getPosValue());		

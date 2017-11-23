@@ -97,42 +97,25 @@
     <dependency>
     	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
     	<artifactId>
-    		de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl
-    	</artifactId>
-    	<version>1.6.2</version>
-    </dependency>
-    <dependency>
-    	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-    	<artifactId>
-    		de.tudarmstadt.ukp.dkpro.core.io.text-asl
-    	</artifactId>
-    </dependency>
-    <dependency>
-    	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-    	<artifactId>
     		de.tudarmstadt.ukp.dkpro.core.languagetool-asl
     	</artifactId>
-    	<version>1.6.2</version>
+    	<version>1.8.0</version>
     </dependency>
     <dependency>
     	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-    	<artifactId>
-    		de.tudarmstadt.ukp.dkpro.core.maltparser-asl
-    	</artifactId>
-    	<version>1.6.2</version>
-    </dependency>
-    <dependency>
-    	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-    	<artifactId>
-    		de.tudarmstadt.ukp.dkpro.core.io.conll-asl
-    	</artifactId>
-    	<version>1.6.2</version>
-    </dependency>
+    	<artifactId>de.tudarmstadt.ukp.dkpro.core.maltparser-asl</artifactId>
+    	<version>1.8.0</version>
+	</dependency>
     <dependency>
     	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
     	<artifactId>
     		de.tudarmstadt.ukp.dkpro.core.snowball-asl
     	</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+      <artifactId>de.tudarmstadt.ukp.dkpro.core.api.syntax-asl</artifactId>
+      <version>1.8.0</version>
     </dependency>
   </dependencies>
 </project>

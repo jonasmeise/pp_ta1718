@@ -5,18 +5,11 @@ import static org.apache.uima.fit.factory.AnalysisEngineFactory.createEngineDesc
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.collection.CollectionReader;
 import org.apache.uima.fit.pipeline.SimplePipeline;
-import org.apache.uima.fit.component.CasDumpWriter;
-
-import static org.apache.uima.fit.factory.CollectionReaderFactory.createReaderDescription;
-import static org.apache.uima.fit.pipeline.SimplePipeline.runPipeline;
-
-import java.util.ArrayList;
-
-import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
-import de.tudarmstadt.ukp.dkpro.core.io.text.TextReader;
+import de.tudarmstadt.ukp.dkpro.core.maltparser.MaltParser;
 import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
 import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpSegmenter;
 import de.tudarmstadt.ukp.dkpro.core.snowball.SnowballStemmer;
+import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency;
 
 public class Pipeline 
 {
@@ -34,18 +27,21 @@ public class Pipeline
     	String emotionDataFile = ".\\NRC_sentimentLexicon.txt";
     	
     	CollectionReader reader = createReader(ReviewReader.class, 
-    			ReviewReader.PARAM_INPUT_FILE, fileString);
+    			ReviewReader.PARAM_INPUT_FILE, fileString,
+    			ReviewReader.PARAM_FILTER_ASIN, "B000068NW5");
     	
         AnalysisEngineDescription seg = createEngineDescription(OpenNlpSegmenter.class);
 
         AnalysisEngineDescription pos = createEngineDescription(OpenNlpPosTagger.class);
         
         AnalysisEngineDescription snw = createEngineDescription(SnowballStemmer.class, SnowballStemmer.PARAM_LANGUAGE, "en");
+        
+        AnalysisEngineDescription dpd = createEngineDescription(MaltParser.class);
 
         AnalysisEngineDescription evl = createEngineDescription(ReviewEvaluator.class, ReviewEvaluator.PARAM_INPUT_FILE, emotionDataFile);
         
         AnalysisEngineDescription writer = createEngineDescription(ProductWriter.class);
         
-    	SimplePipeline.runPipeline(reader, seg, pos, snw, evl, writer);
+    	SimplePipeline.runPipeline(reader, seg, pos, snw, dpd, evl, writer);
     }
 }

@@ -3,27 +3,20 @@ package type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class wordEmotionLink {
-	private List<String> raw;
+public class WordEmotionLink {
 	private List<String> emotionWords;
 	private int emotionValue;
 	private String word;
 	
-	public wordEmotionLink() {
-		raw = new ArrayList<String>();
+	public WordEmotionLink() {
 		emotionWords = new ArrayList<String>();
-		emotionValue = 0;
+		setEmotionValue(0);
 		setWord("");
-	}
-	
-	public List<String> getRaw() {
-		return raw;
 	}
 	
 	public boolean feedRaw(String rawLine) {
 		String[] mySplit;
 		
-		raw.add(rawLine);
 		mySplit = rawLine.split("\\t");
 		
 		if(getWord() != "") {
@@ -48,15 +41,33 @@ public class wordEmotionLink {
 	public List<String> getEmotionWords() {
 		return emotionWords;
 	}
+	
 	public int getEmotionValue() {
 		return emotionValue;
 	}
-	public void calculateEmotionValue() {
-		//TODO
+	
+	public void setEmotionValue(int emotionValue) {
+		this.emotionValue = emotionValue;
 	}
+	
+	public int calculateEmotionValue() {
+		for(String emotionWord : emotionWords) {
+			if(emotionWord == "negative") {
+				setEmotionValue(getEmotionValue()-1);
+			} else if(emotionWord == "positive") {
+				setEmotionValue(getEmotionValue()+1);
+			} else {
+				setEmotionValue(getEmotionValue());
+			}
+		}
+		
+		return getEmotionValue();
+	}
+	
 	public String getWord() {
 		return word;
 	}
+	
 	public void setWord(String word) {
 		this.word = word;
 	}
