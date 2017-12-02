@@ -3,6 +3,7 @@ package project;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
@@ -16,7 +17,9 @@ import org.apache.uima.resource.ResourceInitializationException;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
+import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency;
 import type.EmotionDictionary;
+import type.Tree;
 import type.WordEmotionLink;
 
 public class ReviewEvaluator extends JCasConsumer_ImplBase {
@@ -102,12 +105,41 @@ public class ReviewEvaluator extends JCasConsumer_ImplBase {
 	public void process(JCas aJCas) throws AnalysisEngineProcessException {
 		for (Sentence sentence : JCasUtil.select(aJCas, Sentence.class)) {
 			System.out.println(sentence.getCoveredText());
-			
 
+			List<Dependency> dependencyList = new ArrayList<Dependency>();
+			Token myRoot = null;
 			
-			for(Token token : JCasUtil.selectCovered(aJCas, Token.class, sentence)) {			
-					//System.out.println(token.getCoveredText() + ": " + token.getPos().getPosValue());
+			for(Dependency dp : JCasUtil.selectCovered(Dependency.class, sentence)){
+				dependencyList.add(dp);
+				System.out.println(dp.getGovernor().getCoveredText() + " (" + dp.getGovernor().getPos().getPosValue() + ") -> " + dp.getDependent().getCoveredText() + " (" + dp.getDependent().getPos().getPosValue() + "): " + dp.getDependencyType());
 			}
+			
+			for(Dependency dpElement : dependencyList) {
+				if(dpElement.getDependencyType().compareTo("ROOT") == 0) {
+					myRoot = dpElement.getGovernor();
+				}
+			}
+			
+			Tree<Token> sentenceTree = new Tree<Token>(myRoot);
+			sentenceTree.generateTreeOfDependency(dependencyList, myRoot);
+			sentenceTree.setParentDependencyType("ROOT");
+			
+			System.out.println(sentenceTree.printTree(0));
+			
+			LinkedList<LinkedList<Token>> myOutput = new LinkedList<LinkedList<Token>>();
+			LinkedList<String[]> filterInfo = new LinkedList<String[]>();
+			filterInfo.add(new String[] {"amod", "acomp", "JJ", "JJR", "JJS", "RB", "RBR", "RBS"});
+			filterInfo.add(new String[] {"NN", "NNS", "nsubj"});	
+			sentenceTree.getRelevantInformation(filterInfo, myOutput, null, 0);
+			
+			for(LinkedList<Token> tkList : myOutput) {
+				for(Token tk : tkList) {
+					System.out.print(tk.getCoveredText() + " (" + tk.getPos().getPosValue() + ") ->");
+				}
+				System.out.print("\n");
+			}
+			
+			
 		}
 	}
 }
