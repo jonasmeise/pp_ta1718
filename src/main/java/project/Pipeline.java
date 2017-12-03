@@ -28,7 +28,7 @@ public class Pipeline
     	
     	CollectionReader reader = createReader(ReviewReader.class, 
     			ReviewReader.PARAM_INPUT_FILE, fileString,
-    			ReviewReader.PARAM_FILTER_ASIN, "B000068NW5");
+    			ReviewReader.PARAM_FILTER_ASIN, "B0002CZUUG");
     	
         AnalysisEngineDescription seg = createEngineDescription(OpenNlpSegmenter.class);
 

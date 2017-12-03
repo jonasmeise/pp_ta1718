@@ -118,7 +118,9 @@ public class Tree<T> {
 		return false;
 	}
 	
-	public boolean getRelevantInformation(LinkedList<String[]> searchFilter, LinkedList<LinkedList<T>> output, LinkedList<T> currentTokenList, int filterDepth) {
+	
+	//searchDirection: false->down the tree		true->up the tree
+	public boolean getRelevantInformation(LinkedList<String[]> searchFilter, LinkedList<LinkedList<T>> output, LinkedList<T> currentTokenList, int filterDepth, boolean searchDirection) {
 		if (searchFilter.size() > filterDepth) {
 			String[] currentInformation = searchFilter.get(filterDepth);
 			Token myData = (Token) getData();
@@ -126,7 +128,7 @@ public class Tree<T> {
 			if(currentTokenList.isEmpty()) {// ???????????????????????
 				if(getChildren().size() > 0) {
 					for(Tree<T> child : getChildren()) {
-						child.getRelevantInformation(searchFilter, output, currentTokenList, filterDepth);
+						child.getRelevantInformation(searchFilter, output, currentTokenList, filterDepth, true);
 					}
 				}	
 				
@@ -136,7 +138,13 @@ public class Tree<T> {
 					
 					boolean nextInfo = true;
 					while(nextInfo) {
-						nextInfo = getRelevantInformation(searchFilter, output, linkedData, ++filterDepth);
+						boolean newDirection = true;
+						
+						if(getParentDependencyType().compareTo("ROOT") == 0) {
+							newDirection = !newDirection;
+						}
+						
+						nextInfo = getRelevantInformation(searchFilter, output, linkedData, ++filterDepth, newDirection);
 					}
 				
 					output.add(linkedData);
@@ -147,12 +155,11 @@ public class Tree<T> {
 			else
 			{
 				//Geschwister durchsuchen
-				if(getParent()!=null) {
+				if(getParent()!=null && searchDirection) {
 					Tree<T> myParent = getParent();
 					Token parentData = (Token) myParent.getData();
 					
-					if(isElement(parentData.getPos().getPosValue(), currentInformation) || isElement(parent.getParentDependencyType(), currentInformation)) 
-					{
+					if(isElement(parentData.getPos().getPosValue(), currentInformation) || isElement(parent.getParentDependencyType(), currentInformation)) {
 						//Jetziges Parent-Element ist gesucht?
 						currentTokenList.add((T) parentData);
 						return true;
@@ -169,10 +176,25 @@ public class Tree<T> {
 						}
 					}
 					
-					return myParent.getRelevantInformation(searchFilter, output, currentTokenList, filterDepth); //rekursiv die Geschwister der Eltern ebenfalls durchsuchen
+					return myParent.getRelevantInformation(searchFilter, output, currentTokenList, filterDepth, true); //rekursiv die Geschwister der Eltern ebenfalls durchsuchen
+				}
+				else {
+					//aktuelles Element gesucht?
+					Token currentData = (Token) getData();
+					
+					if(isElement(currentData.getPos().getPosValue(), currentInformation) || isElement(getParentDependencyType(), currentInformation)) {
+						currentTokenList.add((T) myData);
+						return true;
+					}
+					
+					if(getChildren().size() > 0) {
+						for(Tree<T> child : getChildren()) {
+							return child.getRelevantInformation(searchFilter, output, currentTokenList, filterDepth, false);
+						}
+					}
 				}
 				
-				return false;
+				return false; //absolut nichts gefunden, weder in allen Kindern noch aktuellem Tree
 			}
 		}
 		else
