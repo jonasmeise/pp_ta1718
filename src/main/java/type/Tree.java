@@ -123,25 +123,24 @@ public class Tree<T> {
 			String[] currentInformation = searchFilter.get(filterDepth);
 			Token myData = (Token) getData();
 			
-			if(currentTokenList==null) {
+			if(currentTokenList.isEmpty()) {// ???????????????????????
+				if(getChildren().size() > 0) {
+					for(Tree<T> child : getChildren()) {
+						child.getRelevantInformation(searchFilter, output, currentTokenList, filterDepth);
+					}
+				}	
+				
 				if(isElement(myData.getPos().getPosValue(), currentInformation) || isElement(getParentDependencyType(), currentInformation)) {
 					LinkedList<T> linkedData = new LinkedList<T>();
 					linkedData.add((T) myData);
 					
 					boolean nextInfo = true;
 					while(nextInfo) {
-						filterDepth++;
-						nextInfo = getRelevantInformation(searchFilter, output, linkedData, filterDepth);
+						nextInfo = getRelevantInformation(searchFilter, output, linkedData, ++filterDepth);
 					}
-					
+				
 					output.add(linkedData);
 				}
-				
-				if(getChildren().size() > 0) {
-					for(Tree<T> child : getChildren()) {
-						child.getRelevantInformation(searchFilter, output, null, filterDepth);
-					}
-				}	
 
 				return false; //Gibt Standardrückgabewert zurück, nicht relevant
 			}

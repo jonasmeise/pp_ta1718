@@ -130,7 +130,7 @@ public class ReviewEvaluator extends JCasConsumer_ImplBase {
 			LinkedList<String[]> filterInfo = new LinkedList<String[]>();
 			filterInfo.add(new String[] {"amod", "acomp", "JJ", "JJR", "JJS", "RB", "RBR", "RBS"});
 			filterInfo.add(new String[] {"NN", "NNS", "nsubj"});	
-			sentenceTree.getRelevantInformation(filterInfo, myOutput, null, 0);
+			sentenceTree.getRelevantInformation(filterInfo, myOutput, new LinkedList<Token>(), 0);
 			
 			for(LinkedList<Token> tkList : myOutput) {
 				for(Token tk : tkList) {
