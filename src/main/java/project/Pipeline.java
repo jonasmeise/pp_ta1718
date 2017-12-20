@@ -28,7 +28,7 @@ public class Pipeline
     	
     	CollectionReader reader = createReader(ReviewReader.class, 
     			ReviewReader.PARAM_INPUT_FILE, fileString,
-    			ReviewReader.PARAM_FILTER_ASIN, "B0002CZUUG");
+    			ReviewReader.PARAM_FILTER_ASIN, "B0002E1G5C");
     	
         AnalysisEngineDescription seg = createEngineDescription(OpenNlpSegmenter.class);
 
@@ -40,8 +40,8 @@ public class Pipeline
 
         AnalysisEngineDescription evl = createEngineDescription(ReviewEvaluator.class, ReviewEvaluator.PARAM_INPUT_FILE, emotionDataFile);
         
-        AnalysisEngineDescription writer = createEngineDescription(ProductWriter.class);
+        //AnalysisEngineDescription writer = createEngineDescription(ProductWriter.class);
         
-    	SimplePipeline.runPipeline(reader, seg, pos, snw, dpd, evl, writer);
+    	SimplePipeline.runPipeline(reader, seg, pos, snw, dpd, evl);
     }
 }

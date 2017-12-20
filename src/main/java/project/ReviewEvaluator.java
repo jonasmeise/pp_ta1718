@@ -67,8 +67,8 @@ public class ReviewEvaluator extends JCasConsumer_ImplBase {
     @ConfigurationParameter(name = PARAM_INPUT_FILE, mandatory = true)
     private File emotionDataFile;
     private List<String> lines;
-    private EmotionDictionary completeDictionary, reviewEmotionWords;
-    private int currentLine;
+    private EmotionDictionary completeDictionary;
+    private int currentLine, emotionLevel;
     private boolean returnFeed;
 	
 	@Override
@@ -77,7 +77,6 @@ public class ReviewEvaluator extends JCasConsumer_ImplBase {
 			super.initialize(context);
 		
 			completeDictionary = new EmotionDictionary();
-			reviewEmotionWords = new EmotionDictionary();
 			
 			try {
 				lines = FileUtils.readLines(emotionDataFile);
@@ -91,7 +90,7 @@ public class ReviewEvaluator extends JCasConsumer_ImplBase {
 				
 				System.out.println(lines.get(currentLine));
 				
-				do{ //während gerade Werte gefüttert werden und zu demselben Wort gehören, weitermachen
+				do { //während gerade Werte gefüttert werden und zu demselben Wort gehören, weitermachen
 					returnFeed = currentWord.feedRaw(lines.get(currentLine));
 					currentLine++;
 				} while (returnFeed && currentLine<lines.size());
@@ -104,7 +103,7 @@ public class ReviewEvaluator extends JCasConsumer_ImplBase {
 	@Override
 	public void process(JCas aJCas) throws AnalysisEngineProcessException {
 		for (Sentence sentence : JCasUtil.select(aJCas, Sentence.class)) {
-			System.out.println(sentence.getCoveredText());
+			System.out.println("***" + sentence.getCoveredText() + "***");
 
 			List<Dependency> dependencyList = new ArrayList<Dependency>();
 			Token myRoot = null;
@@ -131,12 +130,20 @@ public class ReviewEvaluator extends JCasConsumer_ImplBase {
 			filterInfo.add(new String[] {"amod", "acomp", "JJ", "JJR", "JJS"});
 			filterInfo.add(new String[] {"CD", "NN", "NNP", "NNS", "nsubj"});	
 			sentenceTree.getRelevantInformation(filterInfo, myOutput, new LinkedList<Token>(), 0, true);
-			
+		
+		
 			for(LinkedList<Token> tkList : myOutput) {
+				emotionLevel = 0;
 				for(Token tk : tkList) {
 					System.out.print(tk.getCoveredText() + " (" + tk.getPos().getPosValue() + ") ->");
+					WordEmotionLink currentWord = completeDictionary.getWord(tk.getCoveredText());
+					
+					if(currentWord!=null) { 
+						emotionLevel += currentWord.getEmotionValue();
+					}
 				}
-				System.out.print("\n");
+				
+				System.out.print(emotionLevel + "\n");
 			}
 			
 			

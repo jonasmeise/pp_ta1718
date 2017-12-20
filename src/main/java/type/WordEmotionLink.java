@@ -20,12 +20,12 @@ public class WordEmotionLink {
 		mySplit = rawLine.split("\\t");
 		
 		if(getWord() != "") {
-			if(getWord().compareTo(mySplit[0]) != '0') { //wort eingefüttert, was allerdings keine Daten für das bereits existierende Wort bietet -> false zurückgeben
+			if(getWord().compareTo(mySplit[0]) != 0) { //wort eingefüttert, was allerdings keine Daten für das bereits existierende Wort bietet -> false zurückgeben
 				return false;
 			}
 			else
 			{
-				if(mySplit[2] == "1") { //neues emotionWord gefunden
+				if(mySplit[2].compareTo("1") == 0) { //neues emotionWord gefunden
 					emotionWords.add(mySplit[1]);
 				}
 				
@@ -35,7 +35,8 @@ public class WordEmotionLink {
 		else
 		{
 			setWord(mySplit[0]);
-			return true;
+			//direkt den Wert der neben dem neuen Wert steht einspeichern
+			return feedRaw(rawLine);
 		}
 	}
 	public List<String> getEmotionWords() {
@@ -52,12 +53,10 @@ public class WordEmotionLink {
 	
 	public int calculateEmotionValue() {
 		for(String emotionWord : emotionWords) {
-			if(emotionWord == "negative") {
+			if(emotionWord.compareTo("negative")==0) {
 				setEmotionValue(getEmotionValue()-1);
-			} else if(emotionWord == "positive") {
+			} else if(emotionWord.compareTo("positive")==0) {
 				setEmotionValue(getEmotionValue()+1);
-			} else {
-				setEmotionValue(getEmotionValue());
 			}
 		}
 		
