@@ -15,6 +15,10 @@ public class EmotionDictionary {
 	}
 	
 	public WordEmotionLink getWord(String wortname) {
+		if(wortname == null) {
+			return null;
+		}
+		
 		for( WordEmotionLink allWords : myLinks) {
 			if(allWords.getWord().startsWith(wortname)) {
 				return allWords; //Wort gefunden im Dictionary, wird ausgegeben

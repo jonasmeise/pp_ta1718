@@ -70,6 +70,7 @@ public class ReviewEvaluator extends JCasConsumer_ImplBase {
     private EmotionDictionary completeDictionary;
     private int currentLine, emotionLevel;
     private boolean returnFeed;
+    private LinkedList<LinkedList<Token>> completeOutput = new LinkedList<LinkedList<Token>>();
 	
 	@Override
     public void initialize(UimaContext context) throws ResourceInitializationException
@@ -133,20 +134,32 @@ public class ReviewEvaluator extends JCasConsumer_ImplBase {
 		
 		
 			for(LinkedList<Token> tkList : myOutput) {
+				completeOutput.add(tkList);
+			}
+		}
+	}
+	
+	public void collectionProcessComplete() throws AnalysisEngineProcessException {
+	        super.collectionProcessComplete();
+	        
+			System.out.println(completeOutput.size());
+	        for(LinkedList<Token> tkList : completeOutput) {
 				emotionLevel = 0;
+				
 				for(Token tk : tkList) {
-					System.out.print(tk.getCoveredText() + " (" + tk.getPos().getPosValue() + ") ->");
-					WordEmotionLink currentWord = completeDictionary.getWord(tk.getCoveredText());
-					
-					if(currentWord!=null) { 
-						emotionLevel += currentWord.getEmotionValue();
+					if(tk != null) {
+						WordEmotionLink currentWord = completeDictionary.getWord(tk.getCoveredText());
+						
+						if(currentWord!=null) { 
+							emotionLevel += currentWord.getEmotionValue();
+							System.out.print(tk.getCoveredText() + " (" + tk.getPos().getPosValue() + ") ->");
+						}
 					}
 				}
 				
-				System.out.print(emotionLevel + "\n");
+				if(emotionLevel != 0) {
+					System.out.print(emotionLevel + "\n");
+				}
 			}
-			
-			
-		}
-	}
+	    }
 }
