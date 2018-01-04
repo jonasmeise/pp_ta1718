@@ -19,6 +19,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency;
 import type.EmotionDictionary;
+import type.Output;
 import type.Tree;
 import type.WordEmotionLink;
 
@@ -68,9 +69,9 @@ public class ReviewEvaluator extends JCasConsumer_ImplBase {
     private File emotionDataFile;
     private List<String> lines;
     private EmotionDictionary completeDictionary;
-    private int currentLine, emotionLevel;
+    private int currentLine;
     private boolean returnFeed;
-    private LinkedList<LinkedList<Token>> completeOutput = new LinkedList<LinkedList<Token>>();
+    private LinkedList<Output> completeOutput;
 	
 	@Override
     public void initialize(UimaContext context) throws ResourceInitializationException
@@ -78,6 +79,7 @@ public class ReviewEvaluator extends JCasConsumer_ImplBase {
 			super.initialize(context);
 		
 			completeDictionary = new EmotionDictionary();
+			completeOutput = new LinkedList<Output>();
 			
 			try {
 				lines = FileUtils.readLines(emotionDataFile);
@@ -130,11 +132,17 @@ public class ReviewEvaluator extends JCasConsumer_ImplBase {
 			LinkedList<String[]> filterInfo = new LinkedList<String[]>();
 			filterInfo.add(new String[] {"amod", "acomp", "JJ", "JJR", "JJS"});
 			filterInfo.add(new String[] {"CD", "NN", "NNP", "NNS", "nsubj"});	
-			sentenceTree.getRelevantInformation(filterInfo, myOutput, new LinkedList<Token>(), 0, true);
-		
+			sentenceTree.getRelevantInformation(filterInfo, myOutput, new LinkedList<Token>(), 0, true);		
 		
 			for(LinkedList<Token> tkList : myOutput) {
-				completeOutput.add(tkList);
+				if(!tkList.isEmpty() && tkList!=null && !myOutput.isEmpty()) {
+					Output newOutput = new Output(tkList);
+					completeOutput.add(newOutput);
+				}
+			}	
+			
+			for(Output out : completeOutput) {
+				System.out.println(out.getRoot().getCoveredText() + "(" + out.calculateEmotionLevel(completeDictionary) + ")");
 			}
 		}
 	}
@@ -143,23 +151,5 @@ public class ReviewEvaluator extends JCasConsumer_ImplBase {
 	        super.collectionProcessComplete();
 	        
 			System.out.println(completeOutput.size());
-	        for(LinkedList<Token> tkList : completeOutput) {
-				emotionLevel = 0;
-				
-				for(Token tk : tkList) {
-					if(tk != null) {
-						WordEmotionLink currentWord = completeDictionary.getWord(tk.getCoveredText());
-						
-						if(currentWord!=null) { 
-							emotionLevel += currentWord.getEmotionValue();
-							System.out.print(tk.getCoveredText() + " (" + tk.getPos().getPosValue() + ") ->");
-						}
-					}
-				}
-				
-				if(emotionLevel != 0) {
-					System.out.print(emotionLevel + "\n");
-				}
-			}
-	    }
+	}
 }
