@@ -25,6 +25,7 @@ public class Pipeline
     	
     	String fileString =  ".\\Musical_Instruments_5.json";
     	String emotionDataFile = ".\\NRC_sentimentLexicon.txt";
+    	String outputFile = ".\\output.txt";
     	
     	CollectionReader reader = createReader(ReviewReader.class, 
     			ReviewReader.PARAM_INPUT_FILE, fileString,
@@ -38,7 +39,7 @@ public class Pipeline
         
         AnalysisEngineDescription dpd = createEngineDescription(MaltParser.class);
 
-        AnalysisEngineDescription evl = createEngineDescription(ReviewEvaluator.class, ReviewEvaluator.PARAM_INPUT_FILE, emotionDataFile);
+        AnalysisEngineDescription evl = createEngineDescription(ReviewEvaluator.class, ReviewEvaluator.PARAM_INPUT_FILE, emotionDataFile, ReviewEvaluator.PARAM_OUTPUT_FILE, outputFile);
         
         //AnalysisEngineDescription writer = createEngineDescription(ProductWriter.class);
         

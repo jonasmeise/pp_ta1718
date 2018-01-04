@@ -52,11 +52,29 @@ public class WordEmotionLink {
 	}
 	
 	public int calculateEmotionValue() {
-		for(String emotionWord : emotionWords) {
-			if(emotionWord.compareTo("negative")==0) {
-				setEmotionValue(getEmotionValue()-1);
-			} else if(emotionWord.compareTo("positive")==0) {
-				setEmotionValue(getEmotionValue()+1);
+		if(getEmotionValue()==0) {
+			for(String emotionWord : emotionWords) {
+				if(emotionWord.compareTo("negative")==0) {
+					setEmotionValue(getEmotionValue() - 5);
+				} else if(emotionWord.compareTo("positive")==0) {
+					setEmotionValue(getEmotionValue() + 5);
+				} else if(emotionWord.compareTo("anger")==0) {
+					setEmotionValue(getEmotionValue() - 2);
+				} else if(emotionWord.compareTo("anticipation")==0) {
+					setEmotionValue(getEmotionValue() + 1);
+				} else if(emotionWord.compareTo("disgust")==0) {
+					setEmotionValue(getEmotionValue() - 3);
+				} else if(emotionWord.compareTo("fear")==0) {
+					setEmotionValue(getEmotionValue() - 2);
+				} else if(emotionWord.compareTo("joy")==0) {
+					setEmotionValue(getEmotionValue() + 3);
+				} else if(emotionWord.compareTo("sadness")==0) {
+					setEmotionValue(getEmotionValue() - 4);
+				} else if(emotionWord.compareTo("surprise")==0) {
+					setEmotionValue(getEmotionValue() + 1);
+				} else if(emotionWord.compareTo("trust")==0) {
+					setEmotionValue(getEmotionValue() + 3);
+				}
 			}
 		}
 		

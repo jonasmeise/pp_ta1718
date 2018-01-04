@@ -1,7 +1,10 @@
 package project;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -67,17 +70,32 @@ public class ReviewEvaluator extends JCasConsumer_ImplBase {
 	public static final String PARAM_INPUT_FILE = "emotionDataFile";
     @ConfigurationParameter(name = PARAM_INPUT_FILE, mandatory = true)
     private File emotionDataFile;
+    
+    public static final String PARAM_OUTPUT_FILE = "outputFile";
+    @ConfigurationParameter(name = PARAM_OUTPUT_FILE, mandatory = true)
+    private File outputFile;
+
     private List<String> lines;
     private EmotionDictionary completeDictionary;
     private int currentLine;
     private boolean returnFeed;
     private LinkedList<Output> completeOutput;
+
+    private PrintWriter outputPrinter;
 	
 	@Override
     public void initialize(UimaContext context) throws ResourceInitializationException
     {        
 			super.initialize(context);
 		
+			try {
+				outputPrinter = new PrintWriter(outputFile, "UTF-8");
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+			
 			completeDictionary = new EmotionDictionary();
 			completeOutput = new LinkedList<Output>();
 			
@@ -138,11 +156,11 @@ public class ReviewEvaluator extends JCasConsumer_ImplBase {
 				if(!tkList.isEmpty() && tkList!=null && !myOutput.isEmpty()) {
 					Output newOutput = new Output(tkList);
 					completeOutput.add(newOutput);
+					
+					if(newOutput.getRoot()!=null) {
+						outputPrinter.println(newOutput.getRoot().getCoveredText() + "///" + newOutput.calculateEmotionLevel(completeDictionary)+ "///" + newOutput.allTokensToString());
+					}
 				}
-			}	
-			
-			for(Output out : completeOutput) {
-				System.out.println(out.getRoot().getCoveredText() + "(" + out.calculateEmotionLevel(completeDictionary) + ")");
 			}
 		}
 	}
@@ -151,5 +169,6 @@ public class ReviewEvaluator extends JCasConsumer_ImplBase {
 	        super.collectionProcessComplete();
 	        
 			System.out.println(completeOutput.size());
+			outputPrinter.close();
 	}
 }
