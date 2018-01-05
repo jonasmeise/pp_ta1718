@@ -1,0 +1,7 @@
+Duplikate aus output liste entfernen
+-> Hash-Tabelle für Bezugsobjekte?
+evtl. synonyme herausfinden/zusammenfassen (ka wie)
+
+GUI 
+GUI
+GUI

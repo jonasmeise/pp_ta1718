@@ -44,5 +44,7 @@ public class Pipeline
         //AnalysisEngineDescription writer = createEngineDescription(ProductWriter.class);
         
     	SimplePipeline.runPipeline(reader, seg, pos, snw, dpd, evl);
+    	
+    	
     }
 }
