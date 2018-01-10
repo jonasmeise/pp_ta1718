@@ -46,6 +46,8 @@ public class SaveTable{
 			LinkedList<WordInfo> proxyList = new LinkedList<WordInfo>();
 			int counting;
 			
+System.out.println("Complete list:" + completeList.size());
+			
 			for(WordInfo wordInfo : completeList) {
 				counting = 0;
 				
@@ -61,20 +63,20 @@ public class SaveTable{
 					
 					for(WordInfo item : secondProxy) {
 						if(by.compareTo("emotion")==0) {
-							if(item.getEmotionValue() <= wordInfo.getEmotionValue()) {
+							if(wordInfo.getEmotionValue() >= item.getEmotionValue() ) {
 								proxyList.add(counting, wordInfo);
 								break;
-							} else if (counting > proxyList.size()) {
+							} else if (secondProxy.getLast() == item) {
 								proxyList.addLast(wordInfo);
 								break;
 							}
 							counting++;
 						}
 						else if(by.compareTo("counter")==0) {
-							if(item.getCounter() <= wordInfo.getCounter()) {
+							if(wordInfo.getCounter() >= item.getCounter()) {
 								proxyList.add(counting, wordInfo);
 								break;
-							} else if (counting > proxyList.size()) {
+							} else if (secondProxy.getLast() == item) {
 								proxyList.addLast(wordInfo);
 								break;
 							}

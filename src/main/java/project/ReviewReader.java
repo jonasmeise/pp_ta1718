@@ -45,6 +45,10 @@ public class ReviewReader
     @ConfigurationParameter(name = PARAM_INPUT_TYPE, mandatory = true)
     private String inputType;    //entweder amazonURL oder file
     
+    public static final String PARAM_MAX_CUT = "maxCut";
+    @ConfigurationParameter(name = PARAM_MAX_CUT, mandatory = false)
+    private int maxCut;    //maximale Menge an reviews, die gelesen werden
+    
     ReaderClass myReader;
     private int currentObject;
     
@@ -70,6 +74,9 @@ public class ReviewReader
     	}
         
         try {
+        	if(maxCut>0) {
+        		myReader.setCutBorder(maxCut);
+        	}
 			myReader.getData();
 			System.out.println(myReader.getReviewList().size() + " zutreffende Werte eingelesen");
 		} catch (IOException e) {

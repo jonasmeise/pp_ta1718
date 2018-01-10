@@ -15,6 +15,7 @@ public class ReviewCrawler implements ReaderClass{
 	private String urlToCrawl;
 	private LinkedList<ProductReview> reviewList;
 	private CharSequence replacementChar;
+	private int cutBorder = 300;
 	//<span data-hook="review-body" class="a-size-base review-text"> </span>
 	//https://www.amazon.com/Fate-Stay-Night-Unlimited-Blu-ray/product-reviews/B007K7IC8I/ref=cm_cr_arp_d_paging_btm_2?ie=UTF8&pageNumber=2&reviewerType=all_reviews
 	
@@ -33,6 +34,13 @@ public class ReviewCrawler implements ReaderClass{
 		setReplacementChar(replacementChar);
 	}
 	
+	public int getCutBorder() {
+		return cutBorder;
+	}
+	
+	public void setCutBorder(int cutBorder) {
+		this.cutBorder = cutBorder;
+	}
 	
 	public String getUrlToCrawl() {
 		return urlToCrawl;
@@ -89,6 +97,7 @@ public class ReviewCrawler implements ReaderClass{
 	}
 	
 	public void getData() throws IOException {
+		  
 		  int counter = 1;
 		  boolean returnOutput = true;
 		  
@@ -107,6 +116,10 @@ public class ReviewCrawler implements ReaderClass{
 			  
 			  returnOutput = getReviews(totalData);
 			  counter++;
+			  
+			  if(reviewList.size() > getCutBorder()) {
+				  break;
+			  }
 		  }
 	}
 	

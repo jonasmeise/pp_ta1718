@@ -13,6 +13,7 @@ public class JSONreader implements ReaderClass{
 	
 	public String file;
 	public String filterASIN;
+	private int maxCut;
 	public LinkedList<ProductReview> reviewList = new LinkedList<ProductReview>();
 	
 	public JSONreader(String file) {
@@ -33,6 +34,7 @@ public class JSONreader implements ReaderClass{
 		BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
 
 		String strLine;
+		int counter = 0;
 
 		while ((strLine = br.readLine()) != null)   {
 		  
@@ -42,6 +44,11 @@ public class JSONreader implements ReaderClass{
 		  if(currentReview.getAsin().compareTo(getFilterASIN())==0 || getFilterASIN()==null) {
 			  //Objekt ist unser gesuchter ASIN-Wert oder wir lesen alle Objekte ein
 			  reviewList.add(currentReview);
+			  counter++;
+		  }
+		  
+		  if(counter>maxCut) {
+			  break;
 		  }
 		}
 		
@@ -55,5 +62,9 @@ public class JSONreader implements ReaderClass{
 	
 	public LinkedList<ProductReview> getReviewList(){
 		return reviewList;
+	}
+
+	public void setCutBorder(int cutBorder) {
+		maxCut = cutBorder;
 	}
 }
