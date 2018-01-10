@@ -24,7 +24,8 @@ import de.tudarmstadt.ukp.dkpro.core.api.parameter.ComponentParameters;
 import de.tudarmstadt.ukp.dkpro.core.api.resources.CompressionUtils;
 
 import project.JSONreader;
-import project.ProductReview;
+import type.ProductReview;
+import type.ReaderClass;
 
 public class ReviewReader
     extends JCasCollectionReader_ImplBase
@@ -32,15 +33,19 @@ public class ReviewReader
 
 	//ResourceCollectionReaderBase
 	
-    public static final String PARAM_INPUT_FILE = "InputFile";
+    public static final String PARAM_INPUT_FILE = "inputFile";
     @ConfigurationParameter(name = PARAM_INPUT_FILE, mandatory = true)
-    private String inputFile;    
+    private String inputFile;    //oder URL
     
     public static final String PARAM_FILTER_ASIN = "filterASIN";
     @ConfigurationParameter(name = PARAM_FILTER_ASIN, mandatory = false)
-    private String filterASIN;    
+    private String filterASIN;    //nicht nötig für die AmazonURL, da eh nur 1 Produkt ausgelesen wird
     
-    JSONreader myReader;
+    public static final String PARAM_INPUT_TYPE = "inputType";
+    @ConfigurationParameter(name = PARAM_INPUT_TYPE, mandatory = true)
+    private String inputType;    //entweder amazonURL oder file
+    
+    ReaderClass myReader;
     private int currentObject;
     
     /* 
@@ -53,11 +58,20 @@ public class ReviewReader
     	super.initialize(context);
     	
     	currentObject = 0;
-    	
-        myReader = new JSONreader(inputFile);
+
+    	if(inputType.compareTo("amazonURL")==0) {
+    		myReader = new ReviewCrawler(inputFile);
+    	}
+    	else if(inputType.compareTo("file")==0) {
+    		myReader = new JSONreader(inputFile);
+    		((JSONreader) myReader).setFilterASIN(filterASIN);
+    	} else {
+    		System.out.println("Ungültige Argumente");
+    	}
         
         try {
-			myReader.readObjects(filterASIN);
+			myReader.getData();
+			System.out.println(myReader.getReviewList().size() + " zutreffende Werte eingelesen");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -77,10 +91,6 @@ public class ReviewReader
     	jcas.setDocumentLanguage("en");
     	
         ProductReview current = myReader.getReviewList().get(currentObject);
-        
-        if (current.getReviewerID() == null) {
-            throw new IOException("Objekte hat ungültige Daten");
-        }
         
         jcas.setDocumentText(current.getReviewText());
         

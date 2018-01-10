@@ -4,30 +4,31 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.util.LinkedList;
 
-public class JSONreader{
+import type.ProductReview;
+import type.ReaderClass;
+
+public class JSONreader implements ReaderClass{
 	
 	public String file;
-	public ArrayList<ProductReview> reviewList = new ArrayList<ProductReview>();
+	public String filterASIN;
+	public LinkedList<ProductReview> reviewList = new LinkedList<ProductReview>();
 	
 	public JSONreader(String file) {
 		this.file = file;
 	}
 	
-	//Testweise Main-Methode
-	public static void main(String[] args) throws IOException {
-		JSONreader myJSONreader = new JSONreader(args[0]);
-		
-		myJSONreader.readObjects();
-	}	
-	
-	public void readObjects() throws IOException {
-		readObjects(""); 
+	public void setFilterASIN(String filterASIN) {
+		this.filterASIN = filterASIN;
 	}
 	
+	public String getFilterASIN() {
+		return this.filterASIN;
+	}
+
 	//liest Objekte einer JSON ein und speichert sie in Liste von productReview-Objekten ab
-	public void readObjects(String asin) throws IOException {
+	public void getData() throws IOException {
 		FileInputStream fstream = new FileInputStream(file);
 		BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
 
@@ -38,19 +39,21 @@ public class JSONreader{
 		  ProductReview currentReview = new ProductReview();
 		  currentReview.setData(strLine);
 		  
-		  if(currentReview.getAsin().compareTo(asin)==0 || asin == "") {
+		  if(currentReview.getAsin().compareTo(getFilterASIN())==0 || getFilterASIN()==null) {
 			  //Objekt ist unser gesuchter ASIN-Wert oder wir lesen alle Objekte ein
 			  reviewList.add(currentReview);
 		  }
 		}
 		
-		System.out.println(reviewList.size() + " zutreffende Werte eingelesen");
-		
 		//Input-Stream schlieﬂen
 		br.close();
 	}
 	
-	public ArrayList<ProductReview> getReviewList(){
+	public void addReviewData(ProductReview review) {
+		reviewList.add(review);
+	}
+	
+	public LinkedList<ProductReview> getReviewList(){
 		return reviewList;
 	}
 }

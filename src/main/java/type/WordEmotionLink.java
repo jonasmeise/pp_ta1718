@@ -61,7 +61,7 @@ public class WordEmotionLink {
 				} else if(emotionWord.compareTo("anger")==0) {
 					setEmotionValue(getEmotionValue() - 2);
 				} else if(emotionWord.compareTo("anticipation")==0) {
-					setEmotionValue(getEmotionValue() + 1);
+					setEmotionValue(getEmotionValue() + 3);
 				} else if(emotionWord.compareTo("disgust")==0) {
 					setEmotionValue(getEmotionValue() - 3);
 				} else if(emotionWord.compareTo("fear")==0) {

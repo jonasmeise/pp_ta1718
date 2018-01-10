@@ -168,7 +168,7 @@ public class ReviewEvaluator extends JCasConsumer_ImplBase {
 	public void collectionProcessComplete() throws AnalysisEngineProcessException {
 	        super.collectionProcessComplete();
 	        
-			System.out.println(completeOutput.size());
+			System.out.println(completeOutput.size() + " gültige Beschreibungen eingelesen");
 			outputPrinter.close();
 	}
 }

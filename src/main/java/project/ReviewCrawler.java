@@ -8,24 +8,27 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.LinkedList;
 
-public class ReviewCrawler {
+import type.ProductReview;
+import type.ReaderClass;
+
+public class ReviewCrawler implements ReaderClass{
 	private String urlToCrawl;
-	private LinkedList<ProductReview> reviewData;
+	private LinkedList<ProductReview> reviewList;
 	private CharSequence replacementChar;
 	//<span data-hook="review-body" class="a-size-base review-text"> </span>
 	//https://www.amazon.com/Fate-Stay-Night-Unlimited-Blu-ray/product-reviews/B007K7IC8I/ref=cm_cr_arp_d_paging_btm_2?ie=UTF8&pageNumber=2&reviewerType=all_reviews
 	
 	public ReviewCrawler() {
-		reviewData = new LinkedList<ProductReview>();
+		reviewList = new LinkedList<ProductReview>();
 	}
 	
 	public ReviewCrawler(String urlToCrawl) {
-		reviewData = new LinkedList<ProductReview>();
+		reviewList = new LinkedList<ProductReview>();
 		setReplacementChar("***");
 		setUrlToCrawl(getReviewURL(urlToCrawl));
 	}
 	public ReviewCrawler(String urlToCrawl, CharSequence replacementChar) {
-		reviewData = new LinkedList<ProductReview>();
+		reviewList = new LinkedList<ProductReview>();
 		setUrlToCrawl(getReviewURL(urlToCrawl));
 		setReplacementChar(replacementChar);
 	}
@@ -43,11 +46,11 @@ public class ReviewCrawler {
 	public void setUrlToCrawl(String urlToCrawl) {
 		this.urlToCrawl = urlToCrawl;
 	}
-	public LinkedList<ProductReview> getReviewData() {
-		return reviewData;
+	public LinkedList<ProductReview> getReviewList() {
+		return reviewList;
 	}
 	public void addReviewData(ProductReview review) {
-		reviewData.add(review);
+		reviewList.add(review);
 	}
 	
 	public String getReviewURL(String productURL) {
@@ -71,7 +74,7 @@ public class ReviewCrawler {
 			if(start>=0 && end>=0) { //nur bei gültigen Werten und ohne Wiederholung
 				ProductReview product = new ProductReview();
 				System.out.println(start + " " + end);
-				product.setReviewText(allText.substring(start+62, end));
+				product.setReviewText(allText.substring(start+62, end).replace("<br />", " "));
 				System.out.println(product.getReviewText());
 				
 				addReviewData(product);

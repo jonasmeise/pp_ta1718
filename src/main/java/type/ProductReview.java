@@ -1,4 +1,4 @@
-package project;
+package type;
 
 public class ProductReview {
 	private String reviewerID;
