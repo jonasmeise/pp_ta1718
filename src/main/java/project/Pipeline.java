@@ -27,7 +27,7 @@ public class Pipeline
         throws Exception
     {    	
     	String fileString =  ".\\Musical_Instruments_5.json";
-    	fileString = "https://www.amazon.com/Evangelion-3-33-You-Redo-Blu-ray/dp/B00GS1DM2S/ref=sr_1_2?ie=UTF8&qid=1515621480&sr=8-2&keywords=evangelion";
+    	fileString = "https://www.amazon.com/all-new-amazon-echo-speaker-with-wifi-alexa-dark-charcoal/dp/B06XCM9LJ4/ref=sr_tr_sr_1?ie=UTF8&qid=1515664292&sr=8-1&keywords=echo";
     	String emotionDataFile = ".\\NRC_sentimentLexicon.txt";
     	String outputFile = ".\\output.txt";
     	String[] ignore = {"i"};
@@ -55,9 +55,15 @@ public class Pipeline
     	
     	CollectionReader reader = createReader(ReviewReader.class, 
     			ReviewReader.PARAM_INPUT_FILE, fileString, //oder amazonURL
+<<<<<<< HEAD
     			ReviewReader.PARAM_INPUT_TYPE, inputType,//file oder amazonURL
     			ReviewReader.PARAM_FILTER_ASIN, filterASIN, //nur nötig für file; 
     			ReviewReader.PARAM_MAX_CUT, maxCut); 
+=======
+    			ReviewReader.PARAM_INPUT_TYPE, "amazonURL",//file oder amazonURL
+    			ReviewReader.PARAM_FILTER_ASIN, "B0002E1G5C", //nur nötig für file; 
+    			ReviewReader.PARAM_MAX_CUT, 50); 
+>>>>>>> branch 'master' of https://github.com/jonasmeise/pp_ta1718
     	
         AnalysisEngineDescription seg = createEngineDescription(OpenNlpSegmenter.class);
 
@@ -117,7 +123,7 @@ public class Pipeline
 			}
 		}
 		
-		myTable.sortBy("emotion");
+		myTable.sortBy("counter");
 		myTable.printStack();
 		myTable.printOutput(outputFile);
     }

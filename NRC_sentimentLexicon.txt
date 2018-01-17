@@ -1,3 +1,13 @@
+best	anger	0
+best	anticipation	0
+best	disgust	0
+best	fear	0
+best	joy	1
+best	negative	0
+best	positive	1
+best	sadness	0
+best	surprise	0
+best	trust	1
 aback	anger	0
 aback	anticipation	0
 aback	disgust	0

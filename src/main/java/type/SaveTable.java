@@ -51,6 +51,11 @@ public class SaveTable{
 			
 System.out.println("Complete list:" + completeList.size());
 			
+			//Verhälltnisbewertung
+			/*for(WordInfo wordIf : completeList) {
+				wordIf.setEmotionValue(Math.round(2*wordIf.getEmotionValue()/wordIf.getCounter()));
+			}*/
+
 			for(WordInfo wordInfo : completeList) {
 				counting = 0;
 				
