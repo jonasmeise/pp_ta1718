@@ -1,5 +1,8 @@
 package type;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -103,5 +106,21 @@ System.out.println("Complete list:" + completeList.size());
 			}
 			System.out.println("");
 		}
+	}
+
+	public void printOutput(String outputFile) throws FileNotFoundException, UnsupportedEncodingException {
+		PrintWriter outputPrinter;
+		outputPrinter = new PrintWriter(outputFile, "UTF-8");
+		
+		for(WordInfo wordInfo : completeList) {
+			System.out.print(wordInfo.getCounter() + "* " + wordInfo.getWord() + " (" + wordInfo.getEmotionValue() + "): ");
+			
+			for(String description : wordInfo.getDescriptionWords()) {
+				outputPrinter.print(", " + description);
+			}
+			outputPrinter.println("");
+		}
+		
+		outputPrinter.close();
 	}
 }

@@ -26,23 +26,38 @@ public class Pipeline
     public static void main(String[] args)
         throws Exception
     {    	
-    	
-    	/*CollectionReader reader = createReader(
-    	        TextReader.class,
-    	        TextReader.PARAM_SOURCE_LOCATION, ".\\src\\test\\resources\\test\\input2.txt",
-    	        TextReader.PARAM_LANGUAGE, "en");*/
-    	
     	String fileString =  ".\\Musical_Instruments_5.json";
     	fileString = "https://www.amazon.com/Evangelion-3-33-You-Redo-Blu-ray/dp/B00GS1DM2S/ref=sr_1_2?ie=UTF8&qid=1515621480&sr=8-2&keywords=evangelion";
     	String emotionDataFile = ".\\NRC_sentimentLexicon.txt";
     	String outputFile = ".\\output.txt";
     	String[] ignore = {"i"};
+    	String inputType = "amazonURL";
+    	String filterASIN = "B0002E1G5C";
+    	int maxCut = 150;
+    	
+    	//Arguments: file,ASIN/amazon filePath/URL maxCut;
+    	
+    	if(args.length == 3) {
+    		if(args[0].contains("file")) {
+    			String[] mySplit = args[0].split(",");
+    			if(mySplit.length==2) {
+    				inputType = mySplit[0];
+    				filterASIN = mySplit[1];
+    			}
+    		}
+    		else {
+    			inputType = args[0];
+    		}
+    		
+    		fileString = args[1];
+    		maxCut = Integer.valueOf(args[2]);
+    	}
     	
     	CollectionReader reader = createReader(ReviewReader.class, 
     			ReviewReader.PARAM_INPUT_FILE, fileString, //oder amazonURL
-    			ReviewReader.PARAM_INPUT_TYPE, "amazonURL",//file oder amazonURL
-    			ReviewReader.PARAM_FILTER_ASIN, "B0002E1G5C", //nur nötig für file; 
-    			ReviewReader.PARAM_MAX_CUT, 10); 
+    			ReviewReader.PARAM_INPUT_TYPE, inputType,//file oder amazonURL
+    			ReviewReader.PARAM_FILTER_ASIN, filterASIN, //nur nötig für file; 
+    			ReviewReader.PARAM_MAX_CUT, maxCut); 
     	
         AnalysisEngineDescription seg = createEngineDescription(OpenNlpSegmenter.class);
 
@@ -104,6 +119,7 @@ public class Pipeline
 		
 		myTable.sortBy("emotion");
 		myTable.printStack();
+		myTable.printOutput(outputFile);
     }
     
     public static boolean contains(String str, String[] array) {
