@@ -55,15 +55,9 @@ public class Pipeline
     	
     	CollectionReader reader = createReader(ReviewReader.class, 
     			ReviewReader.PARAM_INPUT_FILE, fileString, //oder amazonURL
-<<<<<<< HEAD
     			ReviewReader.PARAM_INPUT_TYPE, inputType,//file oder amazonURL
     			ReviewReader.PARAM_FILTER_ASIN, filterASIN, //nur nötig für file; 
     			ReviewReader.PARAM_MAX_CUT, maxCut); 
-=======
-    			ReviewReader.PARAM_INPUT_TYPE, "amazonURL",//file oder amazonURL
-    			ReviewReader.PARAM_FILTER_ASIN, "B0002E1G5C", //nur nötig für file; 
-    			ReviewReader.PARAM_MAX_CUT, 50); 
->>>>>>> branch 'master' of https://github.com/jonasmeise/pp_ta1718
     	
         AnalysisEngineDescription seg = createEngineDescription(OpenNlpSegmenter.class);
 
