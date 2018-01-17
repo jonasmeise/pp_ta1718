@@ -27,9 +27,9 @@ public class Pipeline
         throws Exception
     {    	
     	String fileString =  ".\\Musical_Instruments_5.json";
-    	fileString = "https://www.amazon.com/gp/product/B01DEQ98HW/ref=s9u_simh_gw_i4?ie=UTF8&fpl=fresh&pd_rd_i=B01DEQ98HW&pd_rd_r=98b7f670-fb83-11e7-bb6d-df8617f41b33&pd_rd_w=AYSbm&pd_rd_wg=r0k3C&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=&pf_rd_r=KMV0DT5MPQWHKE881NJA&pf_rd_t=36701&pf_rd_p=e6624b56-7cc1-411f-9d12-9cc8feb6c214&pf_rd_i=desktop";
+    	fileString = "https://www.amazon.com/Princess-Mononoke-Bluray-Combo-Blu-ray/dp/B073ZWK3FK/ref=sr_1_1?ie=UTF8&qid=1516203048&sr=8-1&keywords=princess+mononoke";
     	String emotionDataFile = ".\\NRC_sentimentLexicon.txt";
-    	String outputFile = ".\\output.txt";
+    	String outputFile = ".\\output.html";
     	String[] ignore = {"i"};
     	String inputType = "amazonURL";
     	String filterASIN = "B0002E1G5C";

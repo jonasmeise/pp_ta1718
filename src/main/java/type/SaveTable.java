@@ -107,7 +107,7 @@ System.out.println("Complete list:" + completeList.size());
 			System.out.print(wordInfo.getCounter() + "* " + wordInfo.getWord() + " (" + wordInfo.getEmotionValue() + "): ");
 			
 			for(String description : wordInfo.getDescriptionWords()) {
-				System.out.print(", " + description);
+				System.out.print(description + ",");
 			}
 			System.out.println("");
 		}
@@ -116,16 +116,19 @@ System.out.println("Complete list:" + completeList.size());
 	public void printOutput(String outputFile) throws FileNotFoundException, UnsupportedEncodingException {
 		PrintWriter outputPrinter;
 		outputPrinter = new PrintWriter(outputFile, "UTF-8");
+		outputPrinter.println("<html><link rel=\"stylesheet\" href=\"styles.css\"><body><table id=\"name\"><tr><th>#</th><th>Word</th><th>Emotional Rating</th><th>Emotional Adjectives</th></tr>");
+		//number; word; rating; adjectives
 		
 		for(WordInfo wordInfo : completeList) {
-			System.out.print(wordInfo.getCounter() + "* " + wordInfo.getWord() + " (" + wordInfo.getEmotionValue() + "): ");
+			outputPrinter.print("<tr><td>" + wordInfo.getCounter() + "</td><td>" + wordInfo.getWord() + "</td><td>" + wordInfo.getEmotionValue() + "</td><td>");
 			
 			for(String description : wordInfo.getDescriptionWords()) {
-				outputPrinter.print(", " + description);
+				outputPrinter.print(description + ", ");
 			}
-			outputPrinter.println("");
+			outputPrinter.println("</td></tr>");
 		}
 		
+		outputPrinter.println("</table></body></html>");
 		outputPrinter.close();
 	}
 }
