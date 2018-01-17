@@ -83,7 +83,7 @@ public class ReviewCrawler implements ReaderClass{
 			if(start>=0 && end>=0) { //nur bei gültigen Werten und ohne Wiederholung
 				ProductReview product = new ProductReview();
 				System.out.println(start + " " + end);
-				product.setReviewText(allText.substring(start+62, end).replace("<br />", " "));
+				product.setReviewText(allText.substring(start+62, end).replace("<br />", " ").replace("&#34", "\""));
 				System.out.println(product.getReviewText());
 				
 				addReviewData(product);
