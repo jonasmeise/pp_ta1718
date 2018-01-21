@@ -1,6 +1,8 @@
 package type;
 
 public class ProductReview {
+	//Interne Repräsentation einer Produktreview. Wird von den Readern als Output erzeugt
+	
 	private String reviewerID;
 	private String asin;
 	private String reviewerName;

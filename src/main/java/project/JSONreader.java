@@ -11,6 +11,9 @@ import type.ReaderClass;
 
 public class JSONreader implements ReaderClass{
 	
+	//Klasse zum Einlesen einer einzelnen Amazon
+	//.json Datenbank. 
+	
 	public String file;
 	public String filterASIN;
 	private int maxCut;

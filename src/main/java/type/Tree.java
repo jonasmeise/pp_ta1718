@@ -13,6 +13,9 @@ import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency;
 
 public class Tree<T> {
 
+	//Simple Baumstruktur zum Parsen und Darstellen von Dependencies
+	//Ermöglicht Zuordnungen von Nomen->Adjektiv Beziehungen
+	
     T data;
     Tree<T> parent;
     List<Tree<T>> children;

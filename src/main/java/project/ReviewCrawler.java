@@ -12,6 +12,9 @@ import type.ProductReview;
 import type.ReaderClass;
 
 public class ReviewCrawler implements ReaderClass{
+	//Liest Daten von einer Amazon-Webpage aus. Funktioniert für die meisten Artikel
+	//(Bugs bei Video-Beschreibungen von Amazon-Serien Artikeln
+	
 	private String urlToCrawl;
 	private LinkedList<ProductReview> reviewList;
 	private CharSequence replacementChar;

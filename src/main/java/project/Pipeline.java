@@ -77,7 +77,7 @@ public class Pipeline
     	System.out.println("Pipeline finished.");
     	
     	//Einlesen der Daten die durch die Pipeline generiert wurden, anschließendes
-    	//Sortieren und Einordnen in Hashtabelle
+    	//Sortieren und Einordnen in SaveTable
     	
     	FileInputStream fstream = new FileInputStream(outputFile);
 		BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
@@ -96,7 +96,7 @@ public class Pipeline
 		
 		SaveTable myTable = new SaveTable();
 		
-		for(String str: allInput) {
+		for(String str: allInput) { //Raw Output wieder einlesen um HTML table zu erzeugen
 			String[] split = str.split("///");
 			String[] wordSplit = null;
 			
@@ -120,7 +120,7 @@ public class Pipeline
 		
 		myTable.sortBy(sortBy);
 		myTable.printStack();
-		myTable.printOutput(outputFile);
+		myTable.printOutput(outputFile); //Endgültiger Output
     }
     
     public static boolean contains(String str, String[] array) {

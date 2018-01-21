@@ -8,6 +8,7 @@ public class Output {
 	private LinkedList<Token> allTokens;
 	private Token root;
 	private int emotionLevel;
+	//Fasst Rohdaten zusammen und liefert den Output der Raw-Data Datei
 	
 	public Output() {
 		allTokens = new LinkedList<Token>();

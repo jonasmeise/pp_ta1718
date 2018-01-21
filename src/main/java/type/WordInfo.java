@@ -3,6 +3,10 @@ package type;
 import java.util.ArrayList;
 
 public class WordInfo {
+	//Alternative Repräsentation für die SaveTable-Klasse
+	//Ähnlich wie WordEmotionLink, jedoch wird hier die Menge der Wörter
+	//mitgezählt und andere Struktur verwendet
+	
 	private String word;
 	private ArrayList<String> descriptionWords;
 	private int counter;

@@ -28,6 +28,10 @@ import type.WordEmotionLink;
 
 public class ReviewEvaluator extends JCasConsumer_ImplBase {
 
+	//Klasse zum Zuordnen der POS-Values, Erstellen der Satz-Dependencies und
+	//anschlieﬂendem Ermitteln der sinnvollen Zusammenh‰nge
+	//Erzeugt die Raw-Data output datei
+	
 	/*POS VALUES: 	1.	CC	Coordinating conjunction
 	2.	CD	Cardinal number
 	3.	DT	Determiner

@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmotionDictionary {
+	//Speichert die Daten aus der sentimentLexicon.txt datei ab
+	//Ermöglicht Auslesen der Emotions-Beschreibungen
+	
 	private List<WordEmotionLink> myLinks;
 	
 	public EmotionDictionary() {

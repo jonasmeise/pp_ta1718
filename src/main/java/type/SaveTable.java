@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class SaveTable{
+	//Konvertierung der Raw-Data Datei in die endgültige HTML-Tabelle
+	//Sortieren + Zuordnen aller Rohdaten
+	
 	private ArrayList<WordInfo> completeList;
 	
 	public SaveTable() {

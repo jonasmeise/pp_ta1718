@@ -31,7 +31,8 @@ public class ReviewReader
     extends JCasCollectionReader_ImplBase
 {
 
-	//ResourceCollectionReaderBase
+	//Klasse zum Einlesen aller Rohdaten (entweder File oder URL)
+	//Erzeugen des JCAS Documents aus den virtuellen Daten der Leserklassen
 	
     public static final String PARAM_INPUT_FILE = "inputFile";
     @ConfigurationParameter(name = PARAM_INPUT_FILE, mandatory = true)

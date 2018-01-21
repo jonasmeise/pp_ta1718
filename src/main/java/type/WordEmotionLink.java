@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WordEmotionLink {
+	//Wird von dem EmotionDictionary benutzt, um interne Wortrepräsentationen abzuspeichern
+	//Speichert alle EmotionValues ab
 	private List<String> emotionWords;
 	private int emotionValue;
 	private String word;

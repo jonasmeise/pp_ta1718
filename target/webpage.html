@@ -35,7 +35,7 @@
 	var wert = e.options[e.selectedIndex].value;
 	var parameterSort = "quantity";
 	if(!consoleLog) {
-		consoleParametrer = 0;
+		consoleParameter = 0;
 	}
 	if(wert=="1") { parameterSort = "emotion"; }
 		
@@ -87,7 +87,7 @@
 
    <input type="checkbox" id="console" checked>
    <label for="console">Show Console Log</label><br>
-  <button onclick="start()">Start Analysis</button>
+  <button type="button" onclick="start()">Start Analysis</button>
 
 
 </fieldset>
