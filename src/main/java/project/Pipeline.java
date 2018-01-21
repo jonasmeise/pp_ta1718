@@ -33,11 +33,11 @@ public class Pipeline
     	String[] ignore = {"i"};
     	String inputType = "amazonURL";
     	String filterASIN = "B0002E1G5C";
+    	String sortBy="quantity";
     	int maxCut = 150;
     	
-    	//Arguments: file,ASIN/amazon filePath/URL maxCut;
-    	
-    	if(args.length == 3) {
+    	//Arguments: file,ASIN/amazon filePath/URL maxCut emotion/quantity;
+    	if(args.length == 4) {
     		if(args[0].contains("file")) {
     			String[] mySplit = args[0].split(",");
     			if(mySplit.length==2) {
@@ -51,7 +51,8 @@ public class Pipeline
     		
     		fileString = args[1];
     		maxCut = Integer.valueOf(args[2]);
-    	}
+    		sortBy = args[3];
+    	} 
     	
     	CollectionReader reader = createReader(ReviewReader.class, 
     			ReviewReader.PARAM_INPUT_FILE, fileString, //oder amazonURL
@@ -117,7 +118,7 @@ public class Pipeline
 			}
 		}
 		
-		myTable.sortBy("counter");
+		myTable.sortBy(sortBy);
 		myTable.printStack();
 		myTable.printOutput(outputFile);
     }

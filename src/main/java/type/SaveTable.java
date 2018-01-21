@@ -80,7 +80,7 @@ System.out.println("Complete list:" + completeList.size());
 							}
 							counting++;
 						}
-						else if(by.compareTo("counter")==0) {
+						else if(by.compareTo("quantity")==0) {
 							if(wordInfo.getCounter() >= item.getCounter()) {
 								proxyList.add(counting, wordInfo);
 								break;
