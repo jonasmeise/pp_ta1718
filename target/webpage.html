@@ -28,7 +28,7 @@
 	var url = document.getElementsByName('url')[0].value;
 	var filterASIN = document.getElementsByName('filterASIN')[0].value;
 	var maxCut = document.getElementsByName('maxCut')[0].value;
-	var consoleLog = document.getElementById('console').value;
+	var consoleLog = document.getElementById('console').checked;
 	var consoleParameter = 1;
 	
 	var e = document.getElementById("sort");
@@ -37,7 +37,7 @@
 	if(!consoleLog) {
 		consoleParametrer = 0;
 	}
-	if(wert==1) { parameterSort = "emotion"; }
+	if(wert=="1") { parameterSort = "emotion"; }
 		
 	if(url!="") {
 		if(localFile) {
@@ -80,8 +80,8 @@
    Sort By<br> 
    <select id="sort">
 	
-   <option>Emotional Rating</option>
-   <option>Keyword Quantity</option>
+   <option value="1">Emotional Rating</option>
+   <option value="2">Keyword Quantity</option>
    </select><br>
    
 

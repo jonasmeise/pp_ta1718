@@ -8,6 +8,16 @@ best	positive	1
 best	sadness	0
 best	surprise	0
 best	trust	1
+incredible	anger	0
+incredible	anticipation	1
+incredible	disgust	0
+incredible	fear	0
+incredible	joy	1
+incredible	negative	0
+incredible	positive	1
+incredible	sadness	0
+incredible	surprise	1
+incredible	trust	1
 aback	anger	0
 aback	anticipation	0
 aback	disgust	0
