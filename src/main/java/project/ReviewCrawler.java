@@ -63,6 +63,7 @@ public class ReviewCrawler implements ReaderClass{
 	
 	public String getReviewURL(String productURL) {
 		String output = productURL;
+		output = output.replace("/gp/video/detail/", "/product-reviews/");
 		output = output.replace("/product/", "/product-reviews/");
 		output = output.replace("/dp/", "/product-reviews/");
 		output += "&pageNumber=" + getReplacementChar() + "&reviewerType=all_reviews";
