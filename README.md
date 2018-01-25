@@ -12,4 +12,6 @@ Das Programm lässt sich mit diesen Schritten ausführen:
 maxAmountOfData = maximale Cutoff-Data, es werden nicht mehr als diese Anzahl Werte eingelesen (empfohlen: ~200)
 [emotion|quantity] = gibt Sortierpräferenz an.
 
-Beispielauf: "java -jar de.unidue.langtech.teaching.pp.meise-0.0.1-SNAPSHOT-standalone.jar amazonURL "https://www.amazon.com/Reebok-Classic-Leather-Fashion-Sneaker/dp/B074D8ZL85?pd_rd_wg=sKJXT&pd_rd_r=f5a2b892-c7a4-4f8d-b84d-8f00b7e20581&pd_rd_w=FVpre&ref_=pd_gw_simh&pf_rd_r=QSGVAY4KAMR0F7RV77NK&pf_rd_p=4c5acc25-f4b0-5ad7-9004-0f2549f94c2f" 200 emotion
+Beispielaufruf: "java -jar de.unidue.langtech.teaching.pp.meise-0.0.1-SNAPSHOT-standalone.jar amazonURL "https://www.amazon.com/Reebok-Classic-Leather-Fashion-Sneaker/dp/B074D8ZL85?pd_rd_wg=sKJXT&pd_rd_r=f5a2b892-c7a4-4f8d-b84d-8f00b7e20581&pd_rd_w=FVpre&ref_=pd_gw_simh&pf_rd_r=QSGVAY4KAMR0F7RV77NK&pf_rd_p=4c5acc25-f4b0-5ad7-9004-0f2549f94c2f" 200 emotion
+
+Der Output der .jar wird jeweils in eine Datei namens "output.html" geschrieben. Diese lässt sich auch nach erfolgreichen Ausführen des Programms selber aufrufen, wird auch per iFrame in der normalen "webpage.html" dargestellt.
