@@ -30,6 +30,8 @@ public class Pipeline
     	fileString = "https://www.amazon.com/Princess-Mononoke-Bluray-Combo-Blu-ray/dp/B073ZWK3FK/ref=sr_1_1?ie=UTF8&qid=1516203048&sr=8-1&keywords=princess+mononoke";
     	String emotionDataFile = ".\\NRC_sentimentLexicon.txt";
     	String outputFile = ".\\output.html";
+    	String outputFilePos = ".\\positive.html";
+    	String outputFileNeg = ".\\negative.html";
     	String[] ignore = {"i"};
     	String inputType = "amazonURL";
     	String filterASIN = "B0002E1G5C";
@@ -120,7 +122,9 @@ public class Pipeline
 		
 		myTable.sortBy(sortBy);
 		myTable.printStack();
-		myTable.printOutput(outputFile); //Endgültiger Output
+		//myTable.printOutput(outputFile); //Endgültiger Output
+		myTable.printOutput(outputFilePos, 1);
+		myTable.printOutput(outputFileNeg, -1);
     }
     
     public static boolean contains(String str, String[] array) {

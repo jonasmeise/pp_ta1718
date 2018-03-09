@@ -23,27 +23,32 @@
 	var jarName = "de.unidue.langtech.teaching.pp.meise-0.0.1-SNAPSHOT-standalone.jar";
 
 	
-	var localFile = document.getElementById('r1').checked;
-	var amazon = document.getElementById('r2').checked;
+	//var localFile = document.getElementById('r1').checked;
+	//var amazon = document.getElementById('r2').checked;
 	var url = document.getElementsByName('url')[0].value;
-	var filterASIN = document.getElementsByName('filterASIN')[0].value;
-	var maxCut = document.getElementsByName('maxCut')[0].value;
+	//var filterASIN = document.getElementsByName('filterASIN')[0].value;
+	var maxCut = document.getElementById('maxCut').value;
 	var consoleLog = document.getElementById('console').checked;
 	var consoleParameter = 1;
 	
 	var e = document.getElementById("sort");
 	var wert = e.options[e.selectedIndex].value;
 	var parameterSort = "quantity";
+	
+	Console.log(maxCut);
+
+	var amazon = true;
 	if(!consoleLog) {
+
 		consoleParameter = 0;
 	}
 	if(wert=="1") { parameterSort = "emotion"; }
 		
 	if(url!="") {
-		if(localFile) {
+		/*if(localFile) {
 		        oShell.Run('cmd /c cd ' + path + ' && java -jar ' + jarName + ' file,' + filterASIN + ' "' + url + '" ' + maxCut + " " + parameterSort, consoleParameter);
 		}
-		else if(amazon) {
+		else*/ if(amazon) {
 			console.log('cmd /c cd ' + path + ' && java -jar ' + jarName + ' amazonURL "' + url + '" ' + maxCut);
 			oShell.Run('cmd /c cd ' + path + ' && java -jar ' + jarName + ' amazonURL "' + url + '" ' + maxCut + " " + parameterSort, consoleParameter);
 		}
@@ -53,47 +58,50 @@
 	function update() {
 		if(toggled) {
 	    		document.getElementById("iframeA").src = document.getElementById("iframeA").src;
+			document.getElementById("iframeB").src = document.getElementById("iframeB").src;
 		}
 	}
 
 	function toggle(boo) {
 		toggled = boo;
 	}
+
 </script>
 
 <body>
 
 <form>
 <fieldset>
-<legend>Input Settings</legend>
-  <input type="radio" id="r1" name="type" value="file">Local .json Database<br>
-  <input type="radio" id="r2" name="type" value="amazon" checked>Amazon URL<br><br>
+<legend>ReAnTo - Review Analysis Tool</legend>
+  <!--<input type="radio" id="r1" name="type" value="file">Local .json Database<br>
+  <input type="radio" id="r2" name="type" value="amazon" checked>Amazon URL<br><br>-->
 
-  URL to file/Amazon<br>
-  <input type="url" name="url"><br>
-  ASIN filter (only relevant for .json database)<br>
-  <input type="text" name="filterASIN" maxlength="10"><br>
+  <input type="url" name="url" value="URL to Amazon product"><br>
+  <!--ASIN filter (only relevant for .json database)<br>
+  <input type="text" name="filterASIN" maxlength="10"><br>-->
 
-   Data Cutoff<br>
-  <input type="number" name="maxCut"
-   min="0" max="500" step="10" value="150"><br>
-   Sort By<br> 
+  <div class="slidecontainer">
+  small size, fast processing<input type="range" min="10" max="400" value="150" id="maxCut">huge size, slow processing<br>
+  </div>
+
    <select id="sort">
 	
    <option value="1">Emotional Rating</option>
    <option value="2">Keyword Quantity</option>
    </select><br>
-   
 
    <input type="checkbox" id="console" checked>
    <label for="console">Show Console Log</label><br>
+
   <button type="button" onclick="start()">Start Analysis</button>
-
-
 </fieldset>
-</form>
 
-<iframe onmouseenter="toggle(false)" onmouseleave="toggle(true)" src="output.html" name="targetframe" id="iframeA" allowTransparency="true" scrolling="yes" frameborder="0" >
+<div class="h_iframe">
+<iframe onmouseenter="toggle(false)" onmouseleave="toggle(true)" src="positive.html" name="targetframe1" id="iframeA" allowTransparency="true" scrolling="yes" frameborder="0" >
 </iframe>
+<iframe onmouseenter="toggle(false)" onmouseleave="toggle(true)" src="negative.html" name="targetframe2" id="iframeB" allowTransparency="true" scrolling="yes" frameborder="0" >
+</iframe>
+</div>
+</form>
 
 </html>

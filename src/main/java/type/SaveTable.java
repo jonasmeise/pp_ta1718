@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 
 public class SaveTable{
@@ -116,19 +117,24 @@ System.out.println("Complete list:" + completeList.size());
 		}
 	}
 
-	public void printOutput(String outputFile) throws FileNotFoundException, UnsupportedEncodingException {
+	public void printOutput(String outputFile, int filter) throws FileNotFoundException, UnsupportedEncodingException {
 		PrintWriter outputPrinter;
 		outputPrinter = new PrintWriter(outputFile, "UTF-8");
-		outputPrinter.println("<html><link rel=\"stylesheet\" href=\"styles.css\"><body><table id=\"name\"><tr><th>#</th><th>Word</th><th>Emotional Rating</th><th>Emotional Adjectives</th></tr>");
+		outputPrinter.println("<html><link rel=\"stylesheet\" href=\"styles.css\"><body><table id=\"name\"><tr><th>#</th><th>Word</th><th>Emotional Strength</th><th>Adjectives</th></tr>");
 		//number; word; rating; adjectives
+		if(filter<0) {
+			Collections.reverse(completeList);
+		}
 		
 		for(WordInfo wordInfo : completeList) {
-			outputPrinter.print("<tr><td>" + wordInfo.getCounter() + "</td><td>" + wordInfo.getWord() + "</td><td>" + wordInfo.getEmotionValue() + "</td><td>");
-			
-			for(String description : wordInfo.getDescriptionWords()) {
-				outputPrinter.print(description + ", ");
+			if((filter>0 && wordInfo.getEmotionValue()>filter) || (filter<0 && wordInfo.getEmotionValue()<filter) || filter==0) {
+				outputPrinter.print("<tr><td>" + wordInfo.getCounter() + "</td><td>" + wordInfo.getWord() + "</td><td>" + wordInfo.getEmotionValue() + "</td><td>");
+				
+				for(String description : wordInfo.getDescriptionWords()) {
+					outputPrinter.print(description + ", ");
+				}
+				outputPrinter.println("</td></tr>");
 			}
-			outputPrinter.println("</td></tr>");
 		}
 		
 		outputPrinter.println("</table></body></html>");
