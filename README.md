@@ -68,8 +68,11 @@ In Bezug auf diese kurzen Rezensionen sieht der (von mir gewählte) Gold-Standar
 Diese Liste an Werten treffen eine Aussage über den Artikel selber und sollten vom Programm erkennt werden und richtig eingeordnet werden. Wobei hier auch unklar ist, ob man Bezüge wie *awesome article* aus Rezension #6 mit einbeziehen muss, da es sich ja legidlich um eine zitierte Meinung handelt.
 
 Der Output des Programmes sieht für den Datensatz folgendermaßen aus:
+
 ```Syntax: [#] [Word] [Emotional Strength] [Adjectives]```
+
 **positive Annotationen für**
+
 ```5 article 20 great, lousy, awesome, good, handcrafted,  
 1 money 12 precious,  
 1 something 8 worthy,  
