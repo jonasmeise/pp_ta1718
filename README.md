@@ -48,7 +48,7 @@ Testweise wurde eine kleine .json Datenbank erstellt, die folgende Datensätze a
 
 In Bezug auf diese kurzen Rezensionen sieht der (von mir gewählte) Gold-Standard  der wichtigen Attribute folgend aus:
 ```Syntax: [Bezugswort] -> [beschreibendes Adjektiv]```
-*- price -> cheap, steep, extreme
+- *price -> cheap, steep, extreme
 - condition -> acceptable
 - mistakes -> minor
 - quality -> high (x2), not convincing
