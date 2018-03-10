@@ -38,13 +38,54 @@ Das Programm schreibt einen Output in 3 verschiedene Dateien: *output.html*, *ne
 
 
 #### Testing: Wie gut funktioniert das Programm?
-Testweise wurde eine kleine .json Datenbank erstellt, die folgende Datensätze als Rezension enthält:
+Testweise wurde eine kleine .json Datenbank erstellt, die folgende Datensätze als Pseudo-Rezensionen enthält:
 1. *I bought this product for a very cheap price on this website. The condition is acceptable, and although there are some minor mistakes my wife likes. I'd recommend that product to my friends if they are looking for some high quality product!*
 2. *So, many people have complained over the overpriced costs - but I can tell you, it's worth it! This is a great christmas present for the entire family (that was my present for my aunt), the high quality outweighs the steep price. Dunno what you expected for this price/quality ratio, but I'm more than pleased.*
 3. *What a trashy item, why is this even listed as a topselling item on Amazon? Noone would pay 100$ for such a low-quality product, and I highly regret that buy decision. There is no way that this article is overcosted as hell, and seriously, I was heavily pissed off since my expectations were so high - don't make the same mistake I did, forget about this trash!*
 4. *Fast delivery, highly flexible and beautiful shape - great article, I'd recommend it to my friends.*
 5. *Meh, there is better stuff out there. The quality isn't convincing and I can't imagine how people rate this product with 5 stars. It isn't actually bad, but maybe I should have read the description of that lousy article before buying it. After all, the extreme price was promising an equally high quality product, but in the end it was rather frustrating. I got mixed feelings about it, 3/5 stars.*
-6. So, my friend recommended this "awesome article" to him, telling me that this was his favourite item. So, trusting his opinion, I ordered the same thing here on Amazon and got ... quite a big disappointment delivered to my front door. Why? Why does it need to be so overpriced? I expected some really good handcrafted article, but the look and feel doesn't match that high expectation. So I'm honestly angry at my friend for telling me about this product, time to end the friendship I guess lol. Wouldn't tell anyone to buy that thing yourself, save your precious money for something more worthy!
+6. *So, my friend recommended this "awesome article" to him, telling me that this was his favourite item. So, trusting his opinion, I ordered the same thing here on Amazon and got ... quite a big disappointment delivered to my front door. Why? Why does it need to be so overpriced? I expected some really good handcrafted article, but the look and feel doesn't match that high expectation. So I'm honestly angry at my friend for telling me about this product, time to end the friendship I guess lol. Wouldn't tell anyone to buy that thing yourself, save your precious money for something more worthy!*
 
-In Bezug auf diese kurzen Rezensionen sieht der Gold-Standard der wichtigen Attribute folgend aus:
-```Syntax: [Bezugswort] -> [beschreibendes Adjektiv]
+In Bezug auf diese kurzen Rezensionen sieht der (von mir gewählte) Gold-Standard  der wichtigen Attribute folgend aus:
+```Syntax: [Bezugswort] -> [beschreibendes Adjektiv]```
+- price -> cheap, steep, extreme
+- condition -> acceptable
+- mistakes -> minor
+- quality -> high (x2), not convincing
+- costs -> overpriced
+- present -> great
+- item -> trashy
+- product -> low-quality
+- article -> overcosted, great, not bad, lousy, overpriced
+- delivery -> fast
+- shape -> flexible, beautiful
+- disappointment -> big
+
+Diese Liste an Werten treffen eine Aussage über den Artikel selber und sollten vom Programm erkennt werden und richtig eingeordnet werden. Wobei hier auch unklar ist, ob man Bezüge wie *awesome article* aus Rezension #6 mit einbeziehen muss, da es sich ja legidlich um eine zitierte Meinung handelt.
+
+Der Output des Programmes sieht für den Datensatz folgendermaßen aus:
+```Syntax: [#] [Word] [Emotional Strength] [Adjectives]```
+**positive Annotationen für**
+```5 article 20 great, lousy, awesome, good, handcrafted,  
+1 money 12 precious,  
+1 something 8 worthy,  
+1 shape 8 beautiful,  
+1 "overall" 8 pleased,  
+1 stuff 5 better,  
+1 present 5 great,  
+1 condition 5 acceptable,  
+1 quality 3 convincing, 
+```
+
+**negative Annotationen für**
+```4 price -17 cheap, steep, extreme, frustrating,  
+1 it -14 bad,  
+1 costs -12 overpriced,  
+3 item -8 trashy, topselling, favourite,  
+1 people -5 many,
+```
+Die Schnittmenge der gefundenen Wörter mit denen des Gold-Standards beträgt (10/22 = 45%). 
+Es gab Misszuordnungen für die Wörter (it->bad)(quality->convincing), da hier die Negation nicht erkannt wurde und diese somit in die falsche Kategorie eingeordnet wurden.
+Es wurden 6 Annotationen gefunden, die keine oder nur eine sehr geringe inhaltliche Aussage über das Produkt treffen. Diese wurden dennoch aufgeführt, da sie durch ihre Form von dem Algorithmus erkannt wurden.
+Teilweise lässt sich der Grund für nicht-erkannte Wörter auf die Unvollständigkeit des emotionalen Wörterbuches (NRC_sentimentlexicon.txt) zurückführen. Dies enthält nicht emotionale Bewertungen für alle Wörter der englischen Sprache, sodass teilweise Wörter fehlen (z.B. wurde overpriced erkannt, overcosted jedoch nicht -> fehlender Eintrag für overcosted). Diese fehlenden Einträge könnten manuell korrigiert werden, was jedoch ein Prozess von enormer Komplexität ist, da dieser auf Handarbeit beruht.
+
