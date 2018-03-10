@@ -3,37 +3,37 @@ Praxisprojekt Sprachanalysetools fürs Wintersemester 2017/18 Uni DuE
 
 ## Übersicht: Was war die Idee?
 
-Dies ist das Praxisprojekt Sprachanalysetools für das Wintersemester 2017/2018 an der Universität Duisburg-Essen. Idee des Projektes war es, eine Webseite/Applikation zu schreiben, die es erlaubt, eine große Menge Rezensionen von Amazon.com auszulesen und prägnante Beschreibungen auszulesen. Das Programm ist für die englische Sprache und somit auch die englische Version von Amazon.com ausgelegt.
+Dies ist das Praxisprojekt Sprach-Analysetools für das Wintersemester 2017/2018 an der Universität Duisburg-Essen. Idee des Projektes war es, eine Webseite/Applikation zu schreiben, die es erlaubt, eine große Menge Rezensionen von Amazon.com auszulesen und prägnante Beschreibungen auszulesen. Das Programm ist für die englische Sprache und somit auch die englische Version von Amazon.com ausgelegt.
 
 ## Kurzes Tutorial: Wie startet man das Programm?
 
 Das Programm lässt sich mit diesen Schritten ausführen:
-1. Innerhalb eines Ordners müssen die Dateien [...standalone.jar], webpage.html, styles.css und NRC_SentimentLexicon.txt vorhanden sein. Diese Dateien lassen sich aus dem /target/-Ordner des Gits-Repository herunterladen. Das Hauptprogramm ist webpage.html
+1. Innerhalb eines Ordners müssen die **4** Dateien ```[...standalone.jar]```, ```webpage.html```, ```styles.css``` und ```NRC_SentimentLexicon.txt``` vorhanden sein. Diese Dateien lassen sich aus dem /target/-Ordner des Gits-Repository herunterladen. Das Hauptprogramm ist webpage.html
 2. Die Webseite webpage.html sollte mit Internet Explorer ausgeführt werden, da andere Browser nicht die Skriptfunktionen unterstützen (die Ausführung des Programmes wird über ein DirectX-Plugin gehandhabt, dies muss beim Start der Webseite in einem Popup-Fenster zugelassen werden).
 3. Die Webseite enthält ein Eingabefeld, in welches ein Link zu einem Produkt von www.amazon.com eingefügt werden soll. Mit einem Schieberegler lässt sich festlegen, wie viele Werte eingelesen werden sollen (150 ist der Standardwert). Der Konsolenlog kann nach Bedarf ausgeschaltet werden.
 4. Nach einem Klick auf "Search" wird das Programm gestartet. Nach ungefähr ~30sec - 120sec~ sollte dieses fertig durchgelaufen sein (falls der Konsolenlog aktiviert war, verschwindet nun die Konsole). Anschließend werden in zwei Tabellen die Ergebnisse der Suche angezeigt.
 5. Die Tabelle enthält folgende Informationen: 
-   - [#] - die Anzahl der Attribute, die zu einem bestimmten Wort gefunden wurden
-   - [Word] - das Bezugswort, zu welchem die Attribute gehören
-   - [Emotional Strength] - eine Bewertung, die das Bezugswort beschreibt; ein negativer Wert deutet auf eine schlechte emotionale Bewertung, ein positiver Wert auf eine gute Bewertung hin. Je größer der Wert, desto extremer/eindeutiger ist diese Annotation.
-   - [Adjectives] - die Attribute, die das Bezugswort im Kontext beschreiben. Aus ihnen wird der Wert für [Emotional Strength] gebildet.
+   - ```[#]``` - die Anzahl der Attribute, die zu einem bestimmten Wort gefunden wurden
+   - ```[Word]``` - das Bezugswort, zu welchem die Attribute gehören
+   - ```[Emotional Strength]``` - eine Bewertung, die das Bezugswort beschreibt; ein negativer Wert deutet auf eine schlechte emotionale Bewertung, ein positiver Wert auf eine gute Bewertung hin. Je größer der Wert, desto extremer/eindeutiger ist diese Annotation.
+   - ```[Adjectives]``` - die Attribute, die das Bezugswort im Kontext beschreiben. Aus ihnen wird der Wert für ```[Emotional Strength]``` gebildet.
 
 **Alternativ** lässt sich das Programm über die Konsole ausführen: ```java -jar [...standalone.jar] [file,JSON]|amazonURL "UrlToFileOrAmazonProduct" maxAmountOfData emotion```
 
-*...standalone.jar* = der Name der .jar file (probably de.unidue.langtech.teaching.pp.meise-0.0.1-SNAPSHOT-standalone.jar)
-*[file,json]|amazonURL* = entweder file,JSON angeben (z.b. file,B0002E1G5C) oder nur amazonURL
-*"UrlToFileOrAmazonProduct"* = gibt den Link für entweder .json Datei an (wenn file,JSON gewählt wurde), oder die URL zu dem Amazon-Product (falls amazonURL gewählt wurde)
-*maxAmountOfData* = maximale Menge an Daten, die eingelesen werden sollen; je größer der Wert, desto länger dauert der Analyseprozess (150 ist ein guter Mittelwert).
-emotion = gibt den Wert an, nachdem sortiert wird; im Augenblick ist nur *emotion* implementiert.
+```...standalone.jar``` = der Name der .jar file (probably de.unidue.langtech.teaching.pp.meise-0.0.1-SNAPSHOT-standalone.jar)
+```[file,json]|amazonURL``` = entweder file,JSON angeben (z.b. file,B0002E1G5C) oder nur amazonURL
+```"UrlToFileOrAmazonProduct"``` = gibt den Link für entweder .json Datei an (wenn file,JSON gewählt wurde), oder die URL zu dem Amazon-Product (falls amazonURL gewählt wurde)
+```maxAmountOfData``` = maximale Menge an Daten, die eingelesen werden sollen; je größer der Wert, desto länger dauert der Analyseprozess (150 ist ein guter Mittelwert).
+```emotion``` = gibt den Wert an, nachdem sortiert wird; im Augenblick ist nur *emotion* implementiert.
 
 *Beispielaufruf über die Konsole*: ```java -jar de.unidue.langtech.teaching.pp.meise-0.0.1-SNAPSHOT-standalone.jar amazonURL "https://www.amazon.com/Reebok-Classic-Leather-Fashion-Sneaker/dp/B074D8ZL85?pd_rd_wg=sKJXT&pd_rd_r=f5a2b892-c7a4-4f8d-b84d-8f00b7e20581&pd_rd_w=FVpre&ref_=pd_gw_simh&pf_rd_r=QSGVAY4KAMR0F7RV77NK&pf_rd_p=4c5acc25-f4b0-5ad7-9004-0f2549f94c2f" 200 emotion```
 
 
 ### Weitere Informationen
 Das Programm schreibt einen Output in 3 verschiedene Dateien: *output.html*, *negative.html*, *positive.html*
-*positive.html* umfasst alle positiv gelesen Attribute in einer HTML-Webpage. Diese wird automatisch innerhalb *webpage.html* integriert, kann aber eventuell auch selber in einem beliebigen Browser geöffnet werden.
-*negative.html* umfasst alle negativ gelesen Attribute in einer HTML-Webpage. Diese wird automatisch innerhalb *webpage.html* integriert, kann aber eventuell auch selber in einem beliebigen Browser geöffnet werden.
-*output.html* umfasst die gesamten gelesenen Daten in Rohform; dies ist legidlich eine Supportdatei fürs Programm
+```positive.html``` umfasst alle positiv gelesen Attribute in einer HTML-Webpage. Diese wird automatisch innerhalb *webpage.html* integriert, kann aber eventuell auch selber in einem beliebigen Browser geöffnet werden.
+```negative.html``` umfasst alle negativ gelesen Attribute in einer HTML-Webpage. Diese wird automatisch innerhalb *webpage.html* integriert, kann aber eventuell auch selber in einem beliebigen Browser geöffnet werden.
+```output.html``` umfasst die gesamten gelesenen Daten in Rohform; dies ist legidlich eine Supportdatei fürs Programm
 
 
 
