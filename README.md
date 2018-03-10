@@ -30,10 +30,14 @@ Das Programm lässt sich mit diesen Schritten ausführen:
 
 
 #### Weitere Informationen
+
 Das Programm schreibt einen Output in 3 verschiedene Dateien: *output.html*, *negative.html*, *positive.html*
+
 ```positive.html``` umfasst alle positiv gelesen Attribute in einer HTML-Webpage. Diese wird automatisch innerhalb *webpage.html* integriert, kann aber eventuell auch selber in einem beliebigen Browser geöffnet werden.
+
 ```negative.html``` umfasst alle negativ gelesen Attribute in einer HTML-Webpage. Diese wird automatisch innerhalb *webpage.html* integriert, kann aber eventuell auch selber in einem beliebigen Browser geöffnet werden.
-```output.html``` umfasst die gesamten gelesenen Daten in Rohform; dies ist legidlich eine Supportdatei fürs Programm
+
+```output.html``` umfasst die gesamten gelesenen Daten in Rohform; dies ist legidlich eine Supportdatei fürs Programm.
 
 
 
