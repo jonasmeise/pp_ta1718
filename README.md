@@ -48,18 +48,18 @@ Testweise wurde eine kleine .json Datenbank erstellt, die folgende Datensätze a
 
 In Bezug auf diese kurzen Rezensionen sieht der (von mir gewählte) Gold-Standard  der wichtigen Attribute folgend aus:
 ```Syntax: [Bezugswort] -> [beschreibendes Adjektiv]```
-- *price -> cheap, steep, extreme
-- condition -> acceptable
-- mistakes -> minor
-- quality -> high (x2), not convincing
-- costs -> overpriced
-- present -> great
-- item -> trashy
-- product -> low-quality
-- article -> overcosted, great, not bad, lousy, overpriced
-- delivery -> fast
-- shape -> flexible, beautiful
-- disappointment -> big*
+- *price -> cheap, steep, extreme*
+- *condition -> acceptable*
+- *mistakes -> minor*
+- *quality -> high (x2), not convincing*
+- *costs -> overpriced*
+- *present -> great*
+- *item -> trashy*
+- *product -> low-quality*
+- *article -> overcosted, great, not bad, lousy, overpriced*
+- *delivery -> fast*
+- *shape -> flexible, beautiful*
+- *disappointment -> big*
 
 Diese Liste an Werten treffen eine Aussage über den Artikel selber und sollten vom Programm erkennt werden und richtig eingeordnet werden. Wobei hier auch unklar ist, ob man Bezüge wie *awesome article* aus Rezension #6 mit einbeziehen muss, da es sich ja legidlich um eine zitierte Meinung handelt.
 
