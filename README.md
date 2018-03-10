@@ -29,7 +29,7 @@ Das Programm lässt sich mit diesen Schritten ausführen:
 *Beispielaufruf über die Konsole*: ```java -jar de.unidue.langtech.teaching.pp.meise-0.0.1-SNAPSHOT-standalone.jar amazonURL "https://www.amazon.com/Reebok-Classic-Leather-Fashion-Sneaker/dp/B074D8ZL85?pd_rd_wg=sKJXT&pd_rd_r=f5a2b892-c7a4-4f8d-b84d-8f00b7e20581&pd_rd_w=FVpre&ref_=pd_gw_simh&pf_rd_r=QSGVAY4KAMR0F7RV77NK&pf_rd_p=4c5acc25-f4b0-5ad7-9004-0f2549f94c2f" 200 emotion```
 
 
-### Weitere Informationen
+#### Weitere Informationen
 Das Programm schreibt einen Output in 3 verschiedene Dateien: *output.html*, *negative.html*, *positive.html*
 ```positive.html``` umfasst alle positiv gelesen Attribute in einer HTML-Webpage. Diese wird automatisch innerhalb *webpage.html* integriert, kann aber eventuell auch selber in einem beliebigen Browser geöffnet werden.
 ```negative.html``` umfasst alle negativ gelesen Attribute in einer HTML-Webpage. Diese wird automatisch innerhalb *webpage.html* integriert, kann aber eventuell auch selber in einem beliebigen Browser geöffnet werden.
@@ -84,8 +84,13 @@ Der Output des Programmes sieht für den Datensatz folgendermaßen aus:
 3 item -8 trashy, topselling, favourite,  
 1 people -5 many,
 ```
+
+
 Die Schnittmenge der gefundenen Wörter mit denen des Gold-Standards beträgt (10/22 = **45%**). 
+
 Es gab Misszuordnungen für die Wörter (*it -> bad*)(*quality -> convincing*), da hier die Negation nicht erkannt wurde und diese somit in die falsche Kategorie eingeordnet wurden.
+
 Es wurden 6 Annotationen gefunden, die keine oder nur eine sehr geringe inhaltliche Aussage über das Produkt treffen. Diese wurden dennoch aufgeführt, da sie durch ihre Form von dem Algorithmus erkannt wurden.
+
 Teilweise lässt sich der Grund für nicht-erkannte Wörter auf die Unvollständigkeit des emotionalen Wörterbuches (```NRC_sentimentlexicon.txt```) zurückführen. Dies enthält nicht emotionale Bewertungen für alle Wörter der englischen Sprache, sodass teilweise Wörter fehlen (z.B. wurde *overpriced* erkannt, *overcosted* jedoch nicht -> fehlender Eintrag für *overcosted*). Diese fehlenden Einträge könnten manuell korrigiert werden, was jedoch ein Prozess von enormer Komplexität ist, da dieser auf Handarbeit beruht.
 
