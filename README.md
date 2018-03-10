@@ -37,7 +37,7 @@ Das Programm schreibt einen Output in 3 verschiedene Dateien: *output.html*, *ne
 
 
 
-#### Testing: Wie gut funktioniert das Programm?
+### Testing: Wie gut funktioniert das Programm?
 Testweise wurde eine kleine .json Datenbank erstellt, die folgende Datensätze als Pseudo-Rezensionen enthält:
 1. *I bought this product for a very cheap price on this website. The condition is acceptable, and although there are some minor mistakes my wife likes. I'd recommend that product to my friends if they are looking for some high quality product!*
 2. *So, many people have complained over the overpriced costs - but I can tell you, it's worth it! This is a great christmas present for the entire family (that was my present for my aunt), the high quality outweighs the steep price. Dunno what you expected for this price/quality ratio, but I'm more than pleased.*
@@ -48,7 +48,7 @@ Testweise wurde eine kleine .json Datenbank erstellt, die folgende Datensätze a
 
 In Bezug auf diese kurzen Rezensionen sieht der (von mir gewählte) Gold-Standard  der wichtigen Attribute folgend aus:
 ```Syntax: [Bezugswort] -> [beschreibendes Adjektiv]```
-- price -> cheap, steep, extreme
+*- price -> cheap, steep, extreme
 - condition -> acceptable
 - mistakes -> minor
 - quality -> high (x2), not convincing
@@ -59,7 +59,7 @@ In Bezug auf diese kurzen Rezensionen sieht der (von mir gewählte) Gold-Standar
 - article -> overcosted, great, not bad, lousy, overpriced
 - delivery -> fast
 - shape -> flexible, beautiful
-- disappointment -> big
+- disappointment -> big*
 
 Diese Liste an Werten treffen eine Aussage über den Artikel selber und sollten vom Programm erkennt werden und richtig eingeordnet werden. Wobei hier auch unklar ist, ob man Bezüge wie *awesome article* aus Rezension #6 mit einbeziehen muss, da es sich ja legidlich um eine zitierte Meinung handelt.
 
