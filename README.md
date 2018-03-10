@@ -20,8 +20,8 @@ Das Programm lässt sich mit diesen Schritten ausführen:
 
 **Alternativ** lässt sich das Programm über die Konsole ausführen: ```java -jar [...standalone.jar] [file,JSON]|amazonURL "UrlToFileOrAmazonProduct" maxAmountOfData emotion```
 
-```...standalone.jar``` = der Name der .jar file (probably de.unidue.langtech.teaching.pp.meise-0.0.1-SNAPSHOT-standalone.jar)
-```[file,json]|amazonURL``` = entweder file,JSON angeben (z.b. file,B0002E1G5C) oder nur amazonURL
+```...standalone.jar``` = der Name der .jar file (wahrscheinlich ```de.unidue.langtech.teaching.pp.meise-0.0.1-SNAPSHOT-standalone.jar```)
+```[file,"json"]|amazonURL``` = entweder ```file,"json"``` angeben (z.b. ```file,B0002E1G5C```) oder nur ```amazonURL```
 ```"UrlToFileOrAmazonProduct"``` = gibt den Link für entweder .json Datei an (wenn file,JSON gewählt wurde), oder die URL zu dem Amazon-Product (falls amazonURL gewählt wurde)
 ```maxAmountOfData``` = maximale Menge an Daten, die eingelesen werden sollen; je größer der Wert, desto länger dauert der Analyseprozess (150 ist ein guter Mittelwert).
 ```emotion``` = gibt den Wert an, nachdem sortiert wird; im Augenblick ist nur *emotion* implementiert.
@@ -84,8 +84,8 @@ Der Output des Programmes sieht für den Datensatz folgendermaßen aus:
 3 item -8 trashy, topselling, favourite,  
 1 people -5 many,
 ```
-Die Schnittmenge der gefundenen Wörter mit denen des Gold-Standards beträgt (10/22 = 45%). 
-Es gab Misszuordnungen für die Wörter (it->bad)(quality->convincing), da hier die Negation nicht erkannt wurde und diese somit in die falsche Kategorie eingeordnet wurden.
+Die Schnittmenge der gefundenen Wörter mit denen des Gold-Standards beträgt (10/22 = **45%**). 
+Es gab Misszuordnungen für die Wörter (*it -> bad*)(*quality -> convincing*), da hier die Negation nicht erkannt wurde und diese somit in die falsche Kategorie eingeordnet wurden.
 Es wurden 6 Annotationen gefunden, die keine oder nur eine sehr geringe inhaltliche Aussage über das Produkt treffen. Diese wurden dennoch aufgeführt, da sie durch ihre Form von dem Algorithmus erkannt wurden.
-Teilweise lässt sich der Grund für nicht-erkannte Wörter auf die Unvollständigkeit des emotionalen Wörterbuches (NRC_sentimentlexicon.txt) zurückführen. Dies enthält nicht emotionale Bewertungen für alle Wörter der englischen Sprache, sodass teilweise Wörter fehlen (z.B. wurde overpriced erkannt, overcosted jedoch nicht -> fehlender Eintrag für overcosted). Diese fehlenden Einträge könnten manuell korrigiert werden, was jedoch ein Prozess von enormer Komplexität ist, da dieser auf Handarbeit beruht.
+Teilweise lässt sich der Grund für nicht-erkannte Wörter auf die Unvollständigkeit des emotionalen Wörterbuches (```NRC_sentimentlexicon.txt```) zurückführen. Dies enthält nicht emotionale Bewertungen für alle Wörter der englischen Sprache, sodass teilweise Wörter fehlen (z.B. wurde *overpriced* erkannt, *overcosted* jedoch nicht -> fehlender Eintrag für *overcosted*). Diese fehlenden Einträge könnten manuell korrigiert werden, was jedoch ein Prozess von enormer Komplexität ist, da dieser auf Handarbeit beruht.
 
