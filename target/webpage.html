@@ -25,17 +25,18 @@
 	
 	//var localFile = document.getElementById('r1').checked;
 	//var amazon = document.getElementById('r2').checked;
-	var url = document.getElementsByName('url')[0].value;
+	var url = document.getElementById('url').value;
 	//var filterASIN = document.getElementsByName('filterASIN')[0].value;
 	var maxCut = document.getElementById('maxCut').value;
 	var consoleLog = document.getElementById('console').checked;
 	var consoleParameter = 1;
 	
 	var e = document.getElementById("sort");
-	var wert = e.options[e.selectedIndex].value;
+	//var wert = e.options[e.selectedIndex].value;
+	var wert = "1";
 	var parameterSort = "quantity";
 	
-	Console.log(maxCut);
+	console.log(maxCut);
 
 	var amazon = true;
 	if(!consoleLog) {
@@ -53,6 +54,9 @@
 			oShell.Run('cmd /c cd ' + path + ' && java -jar ' + jarName + ' amazonURL "' + url + '" ' + maxCut + " " + parameterSort, consoleParameter);
 		}
 	}
+
+	document.getElementById("iframeA").style.visibility="visible";
+	document.getElementById("iframeB").style.visibility="visible";
     }
 
 	function update() {
@@ -66,6 +70,12 @@
 		toggled = boo;
 	}
 
+	function toggle_text() {
+		if(document.getElementById('url').value.localeCompare('URL to Amazon Product')===0) {
+			document.getElementById('url').value="";
+		}
+	}
+
 </script>
 
 <body>
@@ -76,7 +86,7 @@
   <!--<input type="radio" id="r1" name="type" value="file">Local .json Database<br>
   <input type="radio" id="r2" name="type" value="amazon" checked>Amazon URL<br><br>-->
 
-  <input type="url" name="url" value="URL to Amazon product"><br>
+  <input type="url" id="url" value="URL to Amazon Product" onclick="toggle_text()"><br>
   <!--ASIN filter (only relevant for .json database)<br>
   <input type="text" name="filterASIN" maxlength="10"><br>-->
 
@@ -84,16 +94,16 @@
   small size, fast processing<input type="range" min="10" max="400" value="150" id="maxCut">huge size, slow processing<br>
   </div>
 
-   <select id="sort">
+   <!--<select id="sort">
 	
    <option value="1">Emotional Rating</option>
    <option value="2">Keyword Quantity</option>
-   </select><br>
+   </select><br>-->
 
    <input type="checkbox" id="console" checked>
    <label for="console">Show Console Log</label><br>
 
-  <button type="button" onclick="start()">Start Analysis</button>
+  <button type="button" onclick="start()">Search</button>
 </fieldset>
 
 <div class="h_iframe">

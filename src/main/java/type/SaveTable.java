@@ -119,8 +119,13 @@ System.out.println("Complete list:" + completeList.size());
 
 	public void printOutput(String outputFile, int filter) throws FileNotFoundException, UnsupportedEncodingException {
 		PrintWriter outputPrinter;
+		String stylefile="name";
+		if(filter<0) {
+			stylefile += "2";
+		}
+		
 		outputPrinter = new PrintWriter(outputFile, "UTF-8");
-		outputPrinter.println("<html><link rel=\"stylesheet\" href=\"styles.css\"><body><table id=\"name\"><tr><th>#</th><th>Word</th><th>Emotional Strength</th><th>Adjectives</th></tr>");
+		outputPrinter.println("<html><link rel=\"stylesheet\" href=\"styles.css\"><body><table id=\"" + stylefile + "\"><tr><th>#</th><th>Word</th><th>Emotional Strength</th><th>Adjectives</th></tr>");
 		//number; word; rating; adjectives
 		if(filter<0) {
 			Collections.reverse(completeList);
