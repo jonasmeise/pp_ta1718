@@ -1,6 +1,9 @@
 # pp_ta1718
 Praxisprojekt Sprachanalysetools fürs Wintersemester 2017/18 Uni DuE
 
+## Inhaltsangabe
+
+
 ## Übersicht: Was war die Idee?
 
 Dies ist das Praxisprojekt Sprach-Analysetools für das Wintersemester 2017/2018 an der Universität Duisburg-Essen. Idee des Projektes war es, eine Webseite/Applikation zu schreiben, die es erlaubt, eine große Menge Rezensionen von Amazon.com auszulesen und prägnante Beschreibungen auszulesen. Das Programm ist für die englische Sprache und somit auch die englische Version von Amazon.com ausgelegt.
@@ -53,6 +56,7 @@ Testweise wurde eine kleine .json Datenbank erstellt, die folgende Datensätze a
 6. *So, my friend recommended this "awesome article" to him, telling me that this was his favourite item. So, trusting his opinion, I ordered the same thing here on Amazon and got ... quite a big disappointment delivered to my front door. Why? Why does it need to be so overpriced? I expected some really good handcrafted article, but the look and feel doesn't match that high expectation. So I'm honestly angry at my friend for telling me about this product, time to end the friendship I guess lol. Wouldn't tell anyone to buy that thing yourself, save your precious money for something more worthy!*
 
 In Bezug auf diese kurzen Rezensionen sieht der (von mir gewählte) Gold-Standard  der wichtigen Attribute folgend aus:
+
 |  Bezugswort  | beschreibendes Adjektiv |
 |:------------:|:-----------------------:|
 | price  | cheap, steep, extreme |
