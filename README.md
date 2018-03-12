@@ -11,14 +11,15 @@ Das Programm lässt sich mit diesen Schritten ausführen:
 1. Innerhalb eines Ordners müssen die **4** Dateien ```[...standalone.jar]```, ```webpage.html```, ```styles.css``` und ```NRC_SentimentLexicon.txt``` vorhanden sein. Diese Dateien lassen sich aus dem /target/-Ordner des Gits-Repository herunterladen. Das Hauptprogramm ist webpage.html
 2. Die Webseite webpage.html sollte mit Internet Explorer ausgeführt werden, da andere Browser nicht die Skriptfunktionen unterstützen (die Ausführung des Programmes wird über ein DirectX-Plugin gehandhabt, dies muss beim Start der Webseite in einem Popup-Fenster zugelassen werden).
 3. Die Webseite enthält ein Eingabefeld, in welches ein Link zu einem Produkt von www.amazon.com eingefügt werden soll. Mit einem Schieberegler lässt sich festlegen, wie viele Werte eingelesen werden sollen (150 ist der Standardwert). Der Konsolenlog kann nach Bedarf ausgeschaltet werden.
-4. Nach einem Klick auf "Search" wird das Programm gestartet. Nach ungefähr ~30sec - 120sec~ sollte dieses fertig durchgelaufen sein (falls der Konsolenlog aktiviert war, verschwindet nun die Konsole). Anschließend werden in zwei Tabellen die Ergebnisse der Suche angezeigt.
+4. Nach einem Klick auf "Search" wird das Programm gestartet. Nach ungefähr ~30sec-120sec sollte dieses fertig durchgelaufen sein (falls der Konsolenlog aktiviert war, verschwindet nun die Konsole). Anschließend werden in zwei Tabellen die Ergebnisse der Suche angezeigt.
 5. Die Tabelle enthält folgende Informationen: 
    - ```[#]``` - die Anzahl der Attribute, die zu einem bestimmten Wort gefunden wurden
    - ```[Word]``` - das Bezugswort, zu welchem die Attribute gehören
    - ```[Emotional Strength]``` - eine Bewertung, die das Bezugswort beschreibt; ein negativer Wert deutet auf eine schlechte emotionale Bewertung, ein positiver Wert auf eine gute Bewertung hin. Je größer der Wert, desto extremer/eindeutiger ist diese Annotation.
    - ```[Adjectives]``` - die Attribute, die das Bezugswort im Kontext beschreiben. Aus ihnen wird der Wert für ```[Emotional Strength]``` gebildet.
 
-**Alternativ** lässt sich das Programm über die Konsole ausführen: ```java -jar [...standalone.jar] [file,JSON]|amazonURL "UrlToFileOrAmazonProduct" maxAmountOfData emotion```
+### Alternativer Aufruf über Konsole
+Das Programm lässt sich auch über die Konsole ausführen: ```java -jar [...standalone.jar] [file,JSON]|amazonURL "UrlToFileOrAmazonProduct" maxAmountOfData emotion```
 
 ```...standalone.jar``` = der Name der .jar file (wahrscheinlich ```de.unidue.langtech.teaching.pp.meise-0.0.1-SNAPSHOT-standalone.jar```)
 ```[file,"json"]|amazonURL``` = entweder ```file,"json"``` angeben (z.b. ```file,B0002E1G5C```) oder nur ```amazonURL```
@@ -39,6 +40,7 @@ Das Programm schreibt einen Output in 3 verschiedene Dateien: *output.html*, *ne
 
 ```output.html``` umfasst die gesamten gelesenen Daten in Rohform; dies ist legidlich eine Supportdatei fürs Programm.
 
+Ein Mockup für das Interface des Programmes findet sich im Hauptordner. 
 
 
 ### Testing: Wie gut funktioniert das Programm?
