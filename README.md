@@ -72,10 +72,8 @@ Diese Liste an Werten treffen eine Aussage über den Artikel selber und sollten 
 Der Output des Programmes sieht für den Datensatz folgendermaßen aus:
 
 **positive Annotationen für**
-
-
-|#  | Word | Emotional Strength  | Adjectives |
-|:------------:|:---------------------:|:------------:|
+| #   | Word | Emotional Strength   | Adjectives |
+|:---:|:----:|:--------------------:|:----------:|
 |  5  |  article  | 20  |  great, lousy, awesome, good, handcrafted |  
 |  1  | money  | 12  | precious | 
 |  1  | something | 8   | worthy |
@@ -86,14 +84,15 @@ Der Output des Programmes sieht für den Datensatz folgendermaßen aus:
 |  1  | condition | 5   | acceptable   | 
 |  1  | quality   | 3   | convincing   | 
 
-
 **negative Annotationen für**
-```4 price -17 cheap, steep, extreme, frustrating,  
-1 it -14 bad,  
-1 costs -12 overpriced,  
-3 item -8 trashy, topselling, favourite,  
-1 people -5 many,
-```
+| #   | Word | Emotional Strength   | Adjectives |
+|:---:|:----:|:--------------------:|:----------:|
+| 4   | price  | -17 | cheap, steep, extreme, frustrating | 
+| 1   | it  | -14 | bad |
+| 1   | costs  | -12 | overpriced   |
+| 1   | item   | -8  | trashy, topselling, favourite  |  
+| 1   | people | -5  | many   |
+
 
 
 Die Schnittmenge der gefundenen Wörter mit denen des Gold-Standards beträgt (10/22 = **45%**). 
