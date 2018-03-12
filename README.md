@@ -53,8 +53,8 @@ Testweise wurde eine kleine .json Datenbank erstellt, die folgende Datensätze a
 6. *So, my friend recommended this "awesome article" to him, telling me that this was his favourite item. So, trusting his opinion, I ordered the same thing here on Amazon and got ... quite a big disappointment delivered to my front door. Why? Why does it need to be so overpriced? I expected some really good handcrafted article, but the look and feel doesn't match that high expectation. So I'm honestly angry at my friend for telling me about this product, time to end the friendship I guess lol. Wouldn't tell anyone to buy that thing yourself, save your precious money for something more worthy!*
 
 In Bezug auf diese kurzen Rezensionen sieht der (von mir gewählte) Gold-Standard  der wichtigen Attribute folgend aus:
-|  Bezugswort  | beschreibendes Adjektiv] |
-|:------------:|:------------------------:|
+|  Bezugswort  | beschreibendes Adjektiv |
+|:------------:|:-----------------------:|
 | price  | cheap, steep, extreme |
 | condition | acceptable |
 | mistakes  | minor |
