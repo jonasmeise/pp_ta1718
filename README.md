@@ -74,7 +74,7 @@ Der Output des Programmes sieht für den Datensatz folgendermaßen aus:
 **positive Annotationen für**
 
 
-|[#]  | [Word] | [Emotional Strength]  | [Adjectives] |
+|#  | Word | Emotional Strength  | Adjectives |
 |:------------:|:---------------------:|:------------:|
 |  5  |  article  | 20  |  great, lousy, awesome, good, handcrafted |  
 |  1  | money  | 12  | precious | 
