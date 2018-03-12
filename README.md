@@ -72,6 +72,7 @@ Diese Liste an Werten treffen eine Aussage über den Artikel selber und sollten 
 Der Output des Programmes sieht für den Datensatz folgendermaßen aus:
 
 **positive Annotationen für**
+
 | #   | Word | Emotional Strength   | Adjectives |
 |:---:|:----:|:--------------------:|:----------:|
 |  5  |  article  | 20  |  great, lousy, awesome, good, handcrafted |  
@@ -85,6 +86,7 @@ Der Output des Programmes sieht für den Datensatz folgendermaßen aus:
 |  1  | quality   | 3   | convincing | 
 
 **negative Annotationen für**
+
 | #   | Word | Emotional Strength   | Adjectives |
 |:---:|:----:|:--------------------:|:----------:|
 | 4   | price  | -17 | cheap, steep, extreme, frustrating | 
