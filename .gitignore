@@ -21,7 +21,6 @@
 *.dmg
 *.gz
 *.iso
-*.jar
 *.rar
 *.tar
 *.zip
@@ -41,4 +40,8 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
-/target/
+output.html
+testDatabase.json
+testDatabase.bat
+positive.html
+negative.html
