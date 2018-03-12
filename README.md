@@ -71,20 +71,21 @@ Diese Liste an Werten treffen eine Aussage über den Artikel selber und sollten 
 
 Der Output des Programmes sieht für den Datensatz folgendermaßen aus:
 
-```Syntax: [#] [Word] [Emotional Strength] [Adjectives]```
-
 **positive Annotationen für**
 
-```5 article 20 great, lousy, awesome, good, handcrafted,  
-1 money 12 precious,  
-1 something 8 worthy,  
-1 shape 8 beautiful,  
-1 "overall" 8 pleased,  
-1 stuff 5 better,  
-1 present 5 great,  
-1 condition 5 acceptable,  
-1 quality 3 convincing, 
-```
+
+|[#]  | [Word] | [Emotional Strength]  | [Adjectives] |
+|:------------:|:---------------------:|:------------:|
+|  5  |  article  | 20  |  great, lousy, awesome, good, handcrafted |  
+|  1  | money  | 12  | precious | 
+|  1  | something | 8   | worthy |
+|  1  | shape  | 8   | beautiful |
+|  1  | "overall"   | 8   | pleased |
+|  1  | stuff  | 5   | better |
+|  1  | present   | 5   | great  | 
+|  1  | condition | 5   | acceptable   | 
+|  1  | quality   | 3   | convincing   | 
+
 
 **negative Annotationen für**
 ```4 price -17 cheap, steep, extreme, frustrating,  
