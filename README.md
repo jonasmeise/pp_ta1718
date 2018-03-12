@@ -81,17 +81,17 @@ Der Output des Programmes sieht für den Datensatz folgendermaßen aus:
 |  1  | "overall"   | 8   | pleased |
 |  1  | stuff  | 5   | better |
 |  1  | present   | 5   | great  | 
-|  1  | condition | 5   | acceptable   | 
-|  1  | quality   | 3   | convincing   | 
+|  1  | condition | 5   | acceptable | 
+|  1  | quality   | 3   | convincing | 
 
 **negative Annotationen für**
 | #   | Word | Emotional Strength   | Adjectives |
 |:---:|:----:|:--------------------:|:----------:|
 | 4   | price  | -17 | cheap, steep, extreme, frustrating | 
 | 1   | it  | -14 | bad |
-| 1   | costs  | -12 | overpriced   |
-| 1   | item   | -8  | trashy, topselling, favourite  |  
-| 1   | people | -5  | many   |
+| 1   | costs  | -12 | overpriced |
+| 1   | item   | -8  | trashy, topselling, favourite |  
+| 1   | people | -5  | many |
 
 
 
