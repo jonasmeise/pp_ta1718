@@ -8,7 +8,7 @@ Dies ist das Praxisprojekt Sprach-Analysetools für das Wintersemester 2017/2018
 ## Kurzes Tutorial: Wie startet man das Programm?
 
 Das Programm lässt sich mit diesen Schritten ausführen:
-1. Innerhalb eines Ordners müssen die **4** Dateien ```[...standalone.jar]```, ```webpage.html```, ```styles.css``` und ```NRC_SentimentLexicon.txt``` vorhanden sein. Diese Dateien lassen sich aus dem /target/-Ordner des Gits-Repository herunterladen. Das Hauptprogramm ist webpage.html
+1. Innerhalb eines Ordners müssen die **4** Dateien ```[...standalone.jar]```, [webpage.html](../master/target/webpage.html), [styles.css](../master/target/styles.css) und [NRC_SentimentLexicon.txt](../master/target/NRC_SentimentLexicon.txt) vorhanden sein. Diese Dateien lassen sich aus dem /target/-Ordner des Gits-Repository herunterladen. Das Hauptprogramm ist webpage.html
 2. Die Webseite webpage.html sollte mit Internet Explorer ausgeführt werden, da andere Browser nicht die Skriptfunktionen unterstützen (die Ausführung des Programmes wird über ein DirectX-Plugin gehandhabt, dies muss beim Start der Webseite in einem Popup-Fenster zugelassen werden).
 3. Die Webseite enthält ein Eingabefeld, in welches ein Link zu einem Produkt von www.amazon.com eingefügt werden soll. Mit einem Schieberegler lässt sich festlegen, wie viele Werte eingelesen werden sollen (150 ist der Standardwert). Der Konsolenlog kann nach Bedarf ausgeschaltet werden.
 4. Nach einem Klick auf "Search" wird das Programm gestartet. Nach ungefähr ~30sec-120sec sollte dieses fertig durchgelaufen sein (falls der Konsolenlog aktiviert war, verschwindet nun die Konsole). Anschließend werden in zwei Tabellen die Ergebnisse der Suche angezeigt.
@@ -53,19 +53,20 @@ Testweise wurde eine kleine .json Datenbank erstellt, die folgende Datensätze a
 6. *So, my friend recommended this "awesome article" to him, telling me that this was his favourite item. So, trusting his opinion, I ordered the same thing here on Amazon and got ... quite a big disappointment delivered to my front door. Why? Why does it need to be so overpriced? I expected some really good handcrafted article, but the look and feel doesn't match that high expectation. So I'm honestly angry at my friend for telling me about this product, time to end the friendship I guess lol. Wouldn't tell anyone to buy that thing yourself, save your precious money for something more worthy!*
 
 In Bezug auf diese kurzen Rezensionen sieht der (von mir gewählte) Gold-Standard  der wichtigen Attribute folgend aus:
-```Syntax: [Bezugswort] -> [beschreibendes Adjektiv]```
-- *price -> cheap, steep, extreme*
-- *condition -> acceptable*
-- *mistakes -> minor*
-- *quality -> high (x2), not convincing*
-- *costs -> overpriced*
-- *present -> great*
-- *item -> trashy*
-- *product -> low-quality*
-- *article -> overcosted, great, not bad, lousy, overpriced*
-- *delivery -> fast*
-- *shape -> flexible, beautiful*
-- *disappointment -> big*
+|  Bezugswort  | beschreibendes Adjektiv] |
+|:------------:|:------------------------:|
+| price  | cheap, steep, extreme |
+| condition | acceptable |
+| mistakes  | minor |
+| quality   | high, high, not convincing |
+| costs  | overpriced |
+| present   | great |
+| item   | trashy |
+| product   | low-quality |
+| article   | overcosted, great, not bad, lousy, overpriced |
+| delivery  | fast |
+| shape  | flexible, beautiful |
+| disappointment  | big |
 
 Diese Liste an Werten treffen eine Aussage über den Artikel selber und sollten vom Programm erkennt werden und richtig eingeordnet werden. Wobei hier auch unklar ist, ob man Bezüge wie *awesome article* aus Rezension #6 mit einbeziehen muss, da es sich ja legidlich um eine zitierte Meinung handelt.
 
