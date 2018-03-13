@@ -21,11 +21,17 @@ Dies ist das Praxisprojekt Sprach-Analysetools für das Wintersemester 2017/2018
 ## Kurzes Tutorial: Wie startet man das Programm?
 
 Das Programm lässt sich mit diesen Schritten ausführen:
-1. Innerhalb eines Ordners müssen die **4** Dateien ```[...standalone.jar]```, [webpage.html](../master/target/webpage.html), [styles.css](../master/target/styles.css) und [NRC_SentimentLexicon.txt](../master/target/NRC_SentimentLexicon.txt) vorhanden sein. Diese Dateien lassen sich aus dem /target/-Ordner des Gits-Repository herunterladen. Das Hauptprogramm ist webpage.html
-2. Die Webseite webpage.html sollte mit Internet Explorer ausgeführt werden, da andere Browser nicht die Skriptfunktionen unterstützen (die Ausführung des Programmes wird über ein DirectX-Plugin gehandhabt, dies muss beim Start der Webseite in einem Popup-Fenster zugelassen werden).
-3. Die Webseite enthält ein Eingabefeld, in welches ein Link zu einem Produkt von www.amazon.com eingefügt werden soll. Mit einem Schieberegler lässt sich festlegen, wie viele Werte eingelesen werden sollen (150 ist der Standardwert). Der Konsolenlog kann nach Bedarf ausgeschaltet werden.
-4. Nach einem Klick auf "Search" wird das Programm gestartet. Nach ungefähr ~30sec-120sec sollte dieses fertig durchgelaufen sein (falls der Konsolenlog aktiviert war, verschwindet nun die Konsole). Anschließend werden in zwei Tabellen die Ergebnisse der Suche angezeigt.
-5. Die Tabelle enthält folgende Informationen: 
+
+1. Die folgenden 4 Dateien müssen heruntergeladen werden:
+   - [...standalone.jar](https://drive.google.com/file/d/1emOdpbUyDBQytgZ9q0tD8nefdA5bY2WV/view?usp=sharing) - diese Datei befindet sich auf einem öffentlichen googledrive-Server, da github das Hochladen der Datei aufgrund der Größe nicht zulässt.
+   - [webpage.html](../master/target/webpage.html)
+   - [styles.css](../master/target/styles.css)
+   - [NRC_SentimentLexicon.txt](../master/target/NRC_SentimentLexicon.txt)
+2. Innerhalb eines Ordners müssen die **4** Dateien [...standalone.jar](https://drive.google.com/file/d/1emOdpbUyDBQytgZ9q0tD8nefdA5bY2WV/view?usp=sharing), [webpage.html](../master/target/webpage.html), [styles.css](../master/target/styles.css) und [NRC_SentimentLexicon.txt](../master/target/NRC_SentimentLexicon.txt) vorhanden sein. Das Hauptprogramm ist webpage.html.
+3. Die Webseite webpage.html sollte mit dem Internet Explorer ausgeführt werden, da andere Browser die Skriptfunktionen nicht unterstützen (die Ausführung des Programmes wird über ein DirectX-Plugin gehandhabt, dies muss beim Start der Webseite in einem Popup-Fenster zugelassen werden - erfolgreich getestet mit Internet Explorer 11).
+4. Die Webseite enthält ein Eingabefeld, in welches ein Link zu einem Produkt von www.amazon.com eingefügt werden soll. Mit einem Schieberegler lässt sich festlegen, wie viele Werte eingelesen werden sollen (150 ist der Standardwert). Der Konsolenlog kann nach Bedarf ausgeschaltet werden.
+5. Nach einem Klick auf "Search" wird das Programm gestartet. Nach ungefähr ~30sec-120sec sollte dieses fertig durchgelaufen sein (falls der Konsolenlog aktiviert war, verschwindet nun die Konsole). Anschließend werden in zwei Tabellen die Ergebnisse der Suche angezeigt.
+6. Die Tabelle enthält folgende Informationen: 
    - ```[#]``` - die Anzahl der Attribute, die zu einem bestimmten Wort gefunden wurden
    - ```[Word]``` - das Bezugswort, zu welchem die Attribute gehören
    - ```[Emotional Strength]``` - eine Bewertung, die das Bezugswort beschreibt; ein negativer Wert deutet auf eine schlechte emotionale Bewertung, ein positiver Wert auf eine gute Bewertung hin. Je größer der Wert, desto extremer/eindeutiger ist diese Annotation.
