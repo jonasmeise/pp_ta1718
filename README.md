@@ -32,6 +32,9 @@ Das Programm lässt sich auch über die Konsole ausführen: ```java -jar [...sta
 
 *Beispielaufruf über die Konsole*: ```java -jar de.unidue.langtech.teaching.pp.meise-0.0.1-SNAPSHOT-standalone.jar amazonURL "https://www.amazon.com/Reebok-Classic-Leather-Fashion-Sneaker/dp/B074D8ZL85?pd_rd_wg=sKJXT&pd_rd_r=f5a2b892-c7a4-4f8d-b84d-8f00b7e20581&pd_rd_w=FVpre&ref_=pd_gw_simh&pf_rd_r=QSGVAY4KAMR0F7RV77NK&pf_rd_p=4c5acc25-f4b0-5ad7-9004-0f2549f94c2f" 200 emotion```
 
+### Kompilieren des Programmes
+
+Das Programm kann auch alternativ über Eclipse kompiliert werden und die .jar Datei auf diese Weise erzeugt werden. Dazu muss der Quellcode mithilfe von Git heruntergeladen und in Eclipse auf normalem Wege importiert werden. Die Hauptklasse ist in diesem Fall /project/Pipeline.java. Der Quellcode muss kompiliert werden über den Befehl ```Run Configurations > Maven Build > de.unidue.langtech... > Parameter: *package shade:shade* > Run```. Es muss beachtet werden, dass die erzeugte .jar sich in demselben Ordner wie die anderen Dateien befindet, siehe [Tutorial](https://github.com/jonasmeise/pp_ta1718#kurzes-tutorial-wie-startet-man-das-programm).
 
 #### Weitere Informationen
 
@@ -43,7 +46,7 @@ Das Programm schreibt einen Output in 3 verschiedene Dateien: *output.html*, *ne
 
 ```output.html``` umfasst die gesamten gelesenen Daten in Rohform; dies ist legidlich eine Supportdatei fürs Programm.
 
-Ein Mockup für das Interface des Programmes findet sich im Hauptordner. 
+Ein [Mockup](../master/Mockup Rezenssionsanalysetool.png) für das Interface des Programmes findet sich im Hauptordner. 
 
 
 ### Testing: Wie gut funktioniert das Programm?
