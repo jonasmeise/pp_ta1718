@@ -65,7 +65,7 @@ Das Programm schreibt einen Output in 3 verschiedene Dateien: *output.html*, *ne
 
 ```output.html``` umfasst die gesamten gelesenen Daten in Rohform; dies ist legidlich eine Supportdatei fürs Programm.
 
-Ein [Mockup](../master/Mockup Rezenssionsanalysetool.png) für das Interface des Programmes findet sich im Hauptordner. 
+Ein [Mockup]("../master/Mockup Rezenssionsanalysetool.png") für das Interface des Programmes findet sich im Hauptordner. 
 
 
 
