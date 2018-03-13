@@ -3,10 +3,20 @@ Praxisprojekt Sprachanalysetools fürs Wintersemester 2017/18 Uni DuE
 
 ## Inhaltsangabe
 
+- [Übersicht](#%C3%9Cbersicht-was-war-die-idee)
+- [Kurzes Tutorial](#kurzes-tutorial-wie-startet-man-das-programm)
+   - [Alternativer Aufruf über die Konsole](#alternativer-aufruf-%C3%BCber-konsole)
+   - [Kompilieren des Programmes](#kompilieren-des-programmes)
+- [Weitere Informationen](#weitere-informationen)
+- [Testing](#testing-wie-gut-funktioniert-das-programm)
+
+
 
 ## Übersicht: Was war die Idee?
 
 Dies ist das Praxisprojekt Sprach-Analysetools für das Wintersemester 2017/2018 an der Universität Duisburg-Essen. Idee des Projektes war es, eine Webseite/Applikation zu schreiben, die es erlaubt, eine große Menge Rezensionen von Amazon.com auszulesen und prägnante Beschreibungen auszulesen. Das Programm ist für die englische Sprache und somit auch die englische Version von Amazon.com ausgelegt.
+
+
 
 ## Kurzes Tutorial: Wie startet man das Programm?
 
@@ -34,9 +44,12 @@ Das Programm lässt sich auch über die Konsole ausführen: ```java -jar [...sta
 
 ### Kompilieren des Programmes
 
-Das Programm kann auch alternativ über Eclipse kompiliert werden und die .jar Datei auf diese Weise erzeugt werden. Dazu muss der Quellcode mithilfe von Git heruntergeladen und in Eclipse auf normalem Wege importiert werden. Die Hauptklasse ist in diesem Fall /project/Pipeline.java. Der Quellcode muss kompiliert werden über den Befehl ```Run Configurations > Maven Build > de.unidue.langtech... > Parameter: *package shade:shade* > Run```. Es muss beachtet werden, dass die erzeugte .jar sich in demselben Ordner wie die anderen Dateien befindet, siehe [Tutorial](https://github.com/jonasmeise/pp_ta1718#kurzes-tutorial-wie-startet-man-das-programm).
+Das Programm kann auch alternativ über Eclipse kompiliert werden und die .jar Datei auf diese Weise erzeugt werden. Dazu muss der Quellcode mithilfe von Git heruntergeladen und in Eclipse auf normalem Wege importiert werden. Die Hauptklasse ist in diesem Fall /project/Pipeline.java. Der Quellcode muss kompiliert werden über den Befehl ```Run Configurations > Maven Build > de.unidue.langtech... > Parameter: *package shade:shade* > Run```. Es muss beachtet werden, dass die erzeugte .jar sich in demselben Ordner wie die anderen Dateien befindet, siehe [Tutorial](#kurzes-tutorial-wie-startet-man-das-programm).
 
-#### Weitere Informationen
+
+
+
+## Weitere Informationen
 
 Das Programm schreibt einen Output in 3 verschiedene Dateien: *output.html*, *negative.html*, *positive.html*
 
@@ -49,7 +62,9 @@ Das Programm schreibt einen Output in 3 verschiedene Dateien: *output.html*, *ne
 Ein [Mockup](../master/Mockup Rezenssionsanalysetool.png) für das Interface des Programmes findet sich im Hauptordner. 
 
 
-### Testing: Wie gut funktioniert das Programm?
+
+
+## Testing: Wie gut funktioniert das Programm?
 Testweise wurde eine kleine .json Datenbank erstellt, die folgende Datensätze als Pseudo-Rezensionen enthält:
 1. *I bought this product for a very cheap price on this website. The condition is acceptable, and although there are some minor mistakes my wife likes. I'd recommend that product to my friends if they are looking for some high quality product!*
 2. *So, many people have complained over the overpriced costs - but I can tell you, it's worth it! This is a great christmas present for the entire family (that was my present for my aunt), the high quality outweighs the steep price. Dunno what you expected for this price/quality ratio, but I'm more than pleased.*
